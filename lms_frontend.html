@@ -7,138 +7,59 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & BASE ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0b0f1a;
-  --bg2:#111827;
-  --bg3:#1a2236;
-  --card:#162032;
-  --card2:#1e2d44;
-  --border:#2a3a55;
-  --accent:#3b82f6;
-  --accent2:#60a5fa;
-  --accent3:#1d4ed8;
-  --gold:#f59e0b;
-  --green:#10b981;
-  --red:#ef4444;
-  --purple:#8b5cf6;
-  --text:#e2e8f0;
-  --text2:#94a3b8;
-  --text3:#64748b;
-  --radius:12px;
-  --radius2:8px;
-  --shadow:0 4px 24px rgba(0,0,0,.4);
-  --shadow2:0 2px 12px rgba(0,0,0,.3);
-  --transition:all .22s cubic-bezier(.4,0,.2,1);
+  --bg:#0b0f1a;--bg2:#111827;--bg3:#1a2236;--card:#162032;--card2:#1e2d44;
+  --border:#2a3a55;--accent:#3b82f6;--accent2:#60a5fa;--accent3:#1d4ed8;
+  --gold:#f59e0b;--green:#10b981;--red:#ef4444;--purple:#8b5cf6;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --radius:12px;--radius2:8px;--shadow:0 4px 24px rgba(0,0,0,.4);
+  --shadow2:0 2px 12px rgba(0,0,0,.3);--transition:all .22s cubic-bezier(.4,0,.2,1);
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
-}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 button{cursor:pointer;border:none;outline:none;font-family:inherit}
 input,select,textarea{font-family:inherit;outline:none}
 a{text-decoration:none;color:inherit}
-
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:999px}
-
-/* ── UTILITY ── */
 .hidden{display:none!important}
-.flex{display:flex}
-.items-center{align-items:center}
-.gap-2{gap:.5rem}
-.gap-3{gap:.75rem}
-.gap-4{gap:1rem}
-.w-full{width:100%}
-.text-center{text-align:center}
-.bold{font-weight:700}
-.mono{font-family:'JetBrains Mono',monospace}
-.serif{font-family:'DM Serif Display',serif}
+.flex{display:flex}.items-center{align-items:center}
+.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}
+.w-full{width:100%}.text-center{text-align:center}
+.bold{font-weight:700}.mono{font-family:'JetBrains Mono',monospace}.serif{font-family:'DM Serif Display',serif}
 
-/* ── TOAST ── */
-#toast{
-  position:fixed;bottom:2rem;right:2rem;z-index:9999;
-  display:flex;flex-direction:column;gap:.5rem;
-}
-.toast-item{
-  padding:.85rem 1.4rem;
-  border-radius:var(--radius2);
-  font-size:.88rem;font-weight:500;
-  display:flex;align-items:center;gap:.7rem;
-  animation:slideIn .3s ease;
-  min-width:240px;max-width:360px;
-  backdrop-filter:blur(12px);
-  box-shadow:var(--shadow);
-}
+/* TOAST */
+#toast{position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem}
+.toast-item{padding:.85rem 1.4rem;border-radius:var(--radius2);font-size:.88rem;font-weight:500;display:flex;align-items:center;gap:.7rem;animation:slideIn .3s ease;min-width:240px;max-width:360px;backdrop-filter:blur(12px);box-shadow:var(--shadow)}
 .toast-success{background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:#34d399}
 .toast-error{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#f87171}
 .toast-info{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);color:#93c5fd}
 @keyframes slideIn{from{opacity:0;transform:translateX(100%)}to{opacity:1;transform:translateX(0)}}
 
-/* ── MODAL ── */
-.modal-backdrop{
-  position:fixed;inset:0;background:rgba(0,0,0,.7);
-  backdrop-filter:blur(6px);z-index:1000;
-  display:flex;align-items:center;justify-content:center;
-  animation:fadeIn .2s ease;
-}
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  width:90%;max-width:560px;
-  max-height:90vh;overflow-y:auto;
-  box-shadow:var(--shadow);
-  animation:scaleIn .2s ease;
-}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);width:90%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow);animation:scaleIn .2s ease}
 @keyframes scaleIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
-.modal-header{
-  padding:1.5rem;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-}
+.modal-header{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .modal-header h3{font-size:1.1rem;font-weight:600}
-.modal-close{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--card2);color:var(--text2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;transition:var(--transition);
-}
+.modal-close{width:32px;height:32px;border-radius:50%;background:var(--card2);color:var(--text2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:var(--transition)}
 .modal-close:hover{background:var(--red);color:#fff}
 .modal-body{padding:1.5rem}
 .modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:.75rem;justify-content:flex-end}
 
-/* ── FORMS ── */
+/* FORMS */
 .form-group{margin-bottom:1rem}
-.form-group label{
-  display:block;margin-bottom:.4rem;
-  font-size:.82rem;font-weight:500;
-  color:var(--text2);text-transform:uppercase;letter-spacing:.05em;
-}
-.form-control{
-  width:100%;padding:.7rem 1rem;
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:var(--radius2);color:var(--text);
-  font-size:.92rem;transition:var(--transition);
-}
+.form-group label{display:block;margin-bottom:.4rem;font-size:.82rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.05em}
+.form-control{width:100%;padding:.7rem 1rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);color:var(--text);font-size:.92rem;transition:var(--transition)}
 .form-control:focus{border-color:var(--accent);background:var(--card2)}
 .form-control::placeholder{color:var(--text3)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 
-/* ── BUTTONS ── */
-.btn{
-  padding:.65rem 1.3rem;border-radius:var(--radius2);
-  font-size:.88rem;font-weight:600;
-  transition:var(--transition);display:inline-flex;
-  align-items:center;gap:.4rem;
-}
+/* BUTTONS */
+.btn{padding:.65rem 1.3rem;border-radius:var(--radius2);font-size:.88rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:.4rem}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-primary:hover{background:var(--accent3);transform:translateY(-1px)}
 .btn-secondary{background:var(--card2);color:var(--text);border:1px solid var(--border)}
@@ -149,308 +70,130 @@ a{text-decoration:none;color:inherit}
 .btn-success:hover{background:var(--green);color:#fff}
 .btn-gold{background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)}
 .btn-gold:hover{background:var(--gold);color:#000}
+.btn-purple{background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}
+.btn-purple:hover{background:var(--purple);color:#fff}
 .btn-sm{padding:.4rem .8rem;font-size:.8rem}
 
-/* ── BADGES ── */
-.badge{
-  display:inline-flex;align-items:center;
-  padding:.2rem .6rem;border-radius:999px;
-  font-size:.75rem;font-weight:600;
-}
+/* BADGES */
+.badge{display:inline-flex;align-items:center;padding:.2rem .6rem;border-radius:999px;font-size:.75rem;font-weight:600}
 .badge-blue{background:rgba(59,130,246,.15);color:var(--accent2)}
 .badge-green{background:rgba(16,185,129,.15);color:#34d399}
 .badge-red{background:rgba(239,68,68,.15);color:#f87171}
 .badge-gold{background:rgba(245,158,11,.15);color:#fcd34d}
 .badge-purple{background:rgba(139,92,246,.15);color:#a78bfa}
 
-/* ── TABLE ── */
+/* TABLE */
 .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse}
-th{
-  background:var(--bg3);color:var(--text2);
-  font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;
-  padding:.85rem 1rem;font-weight:600;text-align:left;
-  border-bottom:1px solid var(--border);white-space:nowrap;
-}
-td{
-  padding:.85rem 1rem;
-  border-bottom:1px solid var(--border);
-  font-size:.88rem;color:var(--text);
-}
+th{background:var(--bg3);color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;padding:.85rem 1rem;font-weight:600;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:.85rem 1rem;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--text)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(255,255,255,.02)}
 
-/* ── STAT CARDS ── */
+/* STAT CARDS */
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
-.stat-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.4rem;
-  position:relative;overflow:hidden;transition:var(--transition);
-}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;position:relative;overflow:hidden;transition:var(--transition)}
 .stat-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.stat-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--accent),var(--purple));
-}
-.stat-card .icon{
-  width:42px;height:42px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;margin-bottom:1rem;
-}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple))}
+.stat-card .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
 .stat-card .value{font-size:2rem;font-weight:700;font-family:'DM Serif Display',serif;color:var(--text)}
 .stat-card .label{font-size:.8rem;color:var(--text2);margin-top:.2rem}
 
-/* ─────────────────────────────────────
-   LOGIN SCREEN
-───────────────────────────────────── */
-#login-screen{
-  min-height:100vh;display:flex;
-  background:var(--bg);
-  position:relative;overflow:hidden;
-}
-.login-bg{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(59,130,246,.15),transparent),
-             radial-gradient(ellipse 40% 40% at 80% 90%,rgba(139,92,246,.1),transparent);
-  pointer-events:none;
-}
-.login-left{
-  flex:1;display:flex;flex-direction:column;
-  justify-content:center;padding:4rem;
-  position:relative;
-}
+/* LOGIN */
+#login-screen{min-height:100vh;display:flex;background:var(--bg);position:relative;overflow:hidden}
+.login-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(59,130,246,.15),transparent),radial-gradient(ellipse 40% 40% at 80% 90%,rgba(139,92,246,.1),transparent);pointer-events:none}
+.login-left{flex:1;display:flex;flex-direction:column;justify-content:center;padding:4rem;position:relative}
 .login-branding{margin-bottom:3rem}
-.login-logo{
-  width:56px;height:56px;border-radius:14px;
-  background:linear-gradient(135deg,var(--accent),var(--purple));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.6rem;margin-bottom:1.2rem;
-  box-shadow:0 8px 24px rgba(59,130,246,.3);
-}
-.login-branding h1{
-  font-family:'DM Serif Display',serif;
-  font-size:2.8rem;color:var(--text);
-  line-height:1.1;
-}
+.login-logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.2rem;box-shadow:0 8px 24px rgba(59,130,246,.3)}
+.login-branding h1{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--text);line-height:1.1}
 .login-branding h1 em{color:var(--accent2);font-style:normal}
 .login-branding p{color:var(--text2);margin-top:.6rem;font-size:.95rem;max-width:360px}
 .login-features{display:flex;flex-direction:column;gap:.8rem;margin-top:2.5rem}
-.login-feature{
-  display:flex;align-items:center;gap:.8rem;
-  color:var(--text2);font-size:.88rem;
-}
-.login-feature-icon{
-  width:30px;height:30px;border-radius:8px;
-  background:rgba(59,130,246,.1);
-  display:flex;align-items:center;justify-content:center;font-size:.85rem;
-}
-
-.login-right{
-  width:440px;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:3rem;background:rgba(17,24,39,.6);
-  backdrop-filter:blur(16px);
-  border-left:1px solid var(--border);
-}
+.login-feature{display:flex;align-items:center;gap:.8rem;color:var(--text2);font-size:.88rem}
+.login-feature-icon{width:30px;height:30px;border-radius:8px;background:rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.login-right{width:440px;display:flex;flex-direction:column;justify-content:center;padding:3rem;background:rgba(17,24,39,.6);backdrop-filter:blur(16px);border-left:1px solid var(--border)}
 .login-right h2{font-size:1.5rem;font-weight:700;margin-bottom:.4rem}
 .login-right .subtitle{color:var(--text2);font-size:.88rem;margin-bottom:2rem}
-
 .role-selector{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
-.role-btn{
-  padding:1rem;border-radius:var(--radius2);
-  border:2px solid var(--border);
-  background:var(--bg3);color:var(--text2);
-  transition:var(--transition);text-align:center;
-}
+.role-btn{padding:1rem;border-radius:var(--radius2);border:2px solid var(--border);background:var(--bg3);color:var(--text2);transition:var(--transition);text-align:center}
 .role-btn.active{border-color:var(--accent);background:rgba(59,130,246,.1);color:var(--accent2)}
 .role-btn:hover:not(.active){border-color:var(--text3)}
 .role-btn .role-icon{font-size:1.5rem;margin-bottom:.3rem}
 .role-btn .role-name{font-size:.85rem;font-weight:600}
-
-.login-btn{
-  width:100%;padding:.9rem;
-  background:linear-gradient(135deg,var(--accent),var(--accent3));
-  color:#fff;border-radius:var(--radius2);
-  font-size:.95rem;font-weight:600;
-  transition:var(--transition);margin-top:.5rem;
-  box-shadow:0 4px 16px rgba(59,130,246,.3);
-}
+.login-btn{width:100%;padding:.9rem;background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;border-radius:var(--radius2);font-size:.95rem;font-weight:600;transition:var(--transition);margin-top:.5rem;box-shadow:0 4px 16px rgba(59,130,246,.3)}
 .login-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(59,130,246,.4)}
 
-/* ─────────────────────────────────────
-   APP SHELL
-───────────────────────────────────── */
+/* APP SHELL */
 #app{display:flex;min-height:100vh}
-
-/* SIDEBAR */
-.sidebar{
-  width:250px;min-width:250px;
-  background:var(--bg2);border-right:1px solid var(--border);
-  display:flex;flex-direction:column;position:fixed;
-  top:0;left:0;bottom:0;z-index:100;
-  transition:var(--transition);
-}
-.sidebar-brand{
-  padding:1.5rem;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:.75rem;
-}
-.sidebar-logo{
-  width:38px;height:38px;border-radius:10px;
-  background:linear-gradient(135deg,var(--accent),var(--purple));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;flex-shrink:0;
-}
+.sidebar{width:250px;min-width:250px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;transition:var(--transition)}
+.sidebar-brand{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
+.sidebar-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .sidebar-brand-text .name{font-weight:700;font-size:1rem}
 .sidebar-brand-text .tagline{font-size:.72rem;color:var(--text3)}
-
-.sidebar-user{
-  padding:1rem 1.2rem;margin:.5rem;
-  background:var(--card);border-radius:var(--radius2);
-  border:1px solid var(--border);
-}
-.sidebar-user .avatar{
-  width:36px;height:36px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--purple));
-  display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;font-weight:700;color:#fff;flex-shrink:0;
-}
+.sidebar-user{padding:1rem 1.2rem;margin:.5rem;background:var(--card);border-radius:var(--radius2);border:1px solid var(--border)}
+.sidebar-user .avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:#fff;flex-shrink:0}
 .sidebar-user .info .username{font-size:.9rem;font-weight:600}
 .sidebar-user .info .role{font-size:.75rem;color:var(--text3);text-transform:capitalize}
-
 .sidebar-nav{flex:1;padding:.75rem;overflow-y:auto}
 .nav-section{margin-bottom:.5rem}
-.nav-section-label{
-  font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;
-  color:var(--text3);padding:.5rem .75rem;font-weight:600;
-}
-.nav-item{
-  display:flex;align-items:center;gap:.7rem;
-  padding:.7rem .75rem;border-radius:var(--radius2);
-  color:var(--text2);font-size:.88rem;font-weight:500;
-  transition:var(--transition);margin-bottom:2px;cursor:pointer;
-}
+.nav-section-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:.5rem .75rem;font-weight:600}
+.nav-item{display:flex;align-items:center;gap:.7rem;padding:.7rem .75rem;border-radius:var(--radius2);color:var(--text2);font-size:.88rem;font-weight:500;transition:var(--transition);margin-bottom:2px;cursor:pointer}
 .nav-item:hover{background:var(--card);color:var(--text)}
 .nav-item.active{background:rgba(59,130,246,.12);color:var(--accent2);border:1px solid rgba(59,130,246,.2)}
 .nav-icon{width:20px;text-align:center;font-size:1rem}
-
 .sidebar-footer{padding:1rem;border-top:1px solid var(--border)}
-.logout-btn{
-  width:100%;padding:.65rem 1rem;
-  background:var(--card2);color:var(--text2);
-  border-radius:var(--radius2);font-size:.85rem;
-  display:flex;align-items:center;gap:.5rem;
-  transition:var(--transition);border:1px solid var(--border);
-}
+.logout-btn{width:100%;padding:.65rem 1rem;background:var(--card2);color:var(--text2);border-radius:var(--radius2);font-size:.85rem;display:flex;align-items:center;gap:.5rem;transition:var(--transition);border:1px solid var(--border)}
 .logout-btn:hover{background:rgba(239,68,68,.15);color:#f87171;border-color:rgba(239,68,68,.3)}
-
-/* MAIN CONTENT */
-.main-content{
-  margin-left:250px;flex:1;
-  display:flex;flex-direction:column;min-height:100vh;
-}
-.topbar{
-  padding:1rem 2rem;background:var(--bg2);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:50;
-}
+.main-content{margin-left:250px;flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{padding:1rem 2rem;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
 .topbar h2{font-size:1.2rem;font-weight:700}
 .topbar-right{display:flex;align-items:center;gap:.75rem}
 .page-content{padding:2rem;flex:1}
-
-/* Section page */
 .section-page{display:none}
 .section-page.active{display:block}
-
-/* Cards */
-.card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem;
-}
-.card-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:1.2rem;
-}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
 .card-title{font-size:1rem;font-weight:600}
 .card-subtitle{font-size:.82rem;color:var(--text2);margin-top:.15rem}
-
-/* Announce card */
-.announce-item{
-  background:var(--card2);border:1px solid var(--border);
-  border-radius:var(--radius2);padding:1.2rem;margin-bottom:.8rem;
-  transition:var(--transition);
-}
+.announce-item{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius2);padding:1.2rem;margin-bottom:.8rem;transition:var(--transition)}
 .announce-item:hover{border-color:var(--accent)}
 .announce-item h4{font-size:.95rem;font-weight:600;margin-bottom:.3rem}
 .announce-item p{font-size:.85rem;color:var(--text2);line-height:1.5}
 .announce-meta{font-size:.75rem;color:var(--text3);margin-top:.5rem;display:flex;gap:1rem}
-
-/* Grade pill */
-.grade-pill{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:50%;
-  font-size:.8rem;font-weight:700;
-}
+.grade-pill{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;font-size:.8rem;font-weight:700}
 .grade-A{background:rgba(16,185,129,.2);color:#34d399}
 .grade-B{background:rgba(59,130,246,.2);color:var(--accent2)}
 .grade-C{background:rgba(245,158,11,.2);color:#fcd34d}
 .grade-D{background:rgba(249,115,22,.2);color:#fb923c}
 .grade-F{background:rgba(239,68,68,.2);color:#f87171}
-
-/* Progress bar */
-.progress-bar{
-  height:6px;border-radius:999px;
-  background:var(--bg3);overflow:hidden;
-}
-.progress-fill{
-  height:100%;border-radius:999px;
-  background:linear-gradient(90deg,var(--accent),var(--purple));
-  transition:width .6s ease;
-}
-
-/* Tabs */
-.tabs{display:flex;gap:.25rem;margin-bottom:1.5rem;
-  background:var(--bg3);padding:.25rem;border-radius:var(--radius2);
-  width:fit-content;
-}
-.tab{
-  padding:.45rem 1rem;border-radius:6px;font-size:.85rem;font-weight:500;
-  color:var(--text2);cursor:pointer;transition:var(--transition);
-}
+.progress-bar{height:6px;border-radius:999px;background:var(--bg3);overflow:hidden}
+.progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--purple));transition:width .6s ease}
+.tabs{display:flex;gap:.25rem;margin-bottom:1.5rem;background:var(--bg3);padding:.25rem;border-radius:var(--radius2);width:fit-content}
+.tab{padding:.45rem 1rem;border-radius:6px;font-size:.85rem;font-weight:500;color:var(--text2);cursor:pointer;transition:var(--transition)}
 .tab.active{background:var(--accent);color:#fff}
-
-/* Empty state */
-.empty-state{
-  text-align:center;padding:3rem;color:var(--text3);
-}
+.empty-state{text-align:center;padding:3rem;color:var(--text3)}
 .empty-state .icon{font-size:2.5rem;margin-bottom:.75rem}
 .empty-state p{font-size:.9rem}
-
-/* Attendance grid */
-.att-status{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:26px;height:26px;border-radius:6px;font-size:.75rem;font-weight:700;
-}
+.att-status{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;font-size:.75rem;font-weight:700}
 .att-present{background:rgba(16,185,129,.2);color:#34d399}
 .att-absent{background:rgba(239,68,68,.2);color:#f87171}
 .att-leave{background:rgba(245,158,11,.2);color:#fcd34d}
+.search-bar{position:relative}
+.search-bar input{padding:.6rem 1rem .6rem 2.4rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);color:var(--text);font-size:.88rem;width:240px}
+.search-bar::before{content:'🔍';position:absolute;left:.75rem;top:50%;transform:translateY(-50%);font-size:.85rem;pointer-events:none}
 
-/* Search bar */
-.search-bar{
-  position:relative;
-}
-.search-bar input{
-  padding:.6rem 1rem .6rem 2.4rem;
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:var(--radius2);color:var(--text);font-size:.88rem;
-  width:240px;
-}
-.search-bar::before{
-  content:'🔍';position:absolute;left:.75rem;top:50%;
-  transform:translateY(-50%);font-size:.85rem;pointer-events:none;
-}
+/* Course tab strip for attendance */
+.course-tab-strip{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.course-tab{padding:.4rem .9rem;border-radius:999px;font-size:.82rem;font-weight:600;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:var(--transition)}
+.course-tab:hover{border-color:var(--accent2);color:var(--accent2)}
+.course-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
 
-/* Responsive helpers */
+/* Password visibility toggle */
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:2.8rem}
+.pw-toggle{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;color:var(--text3);font-size:1rem;border:none;cursor:pointer;padding:0;line-height:1}
+.pw-toggle:hover{color:var(--text)}
+
 @media(max-width:768px){
   .sidebar{transform:translateX(-100%)}
   .main-content{margin-left:0}
@@ -462,73 +205,53 @@ tr:hover td{background:rgba(255,255,255,.02)}
 </head>
 <body>
 
-<!-- TOAST -->
 <div id="toast"></div>
 
-<!-- BACKEND STATUS BANNER -->
-<div id="backend-banner" style="
-  position:fixed;top:0;left:0;right:0;z-index:99999;
-  background:#0b0f1a;border-bottom:1px solid #2a3a55;
-  font-family:'DM Sans',sans-serif;
-  transition:transform .4s ease;
-">
-  <!-- Checking state -->
-  <div id="banner-checking" style="display:flex;align-items:center;justify-content:center;gap:.75rem;padding:.75rem 1.5rem;background:rgba(59,130,246,.08);">
+<!-- BACKEND BANNER -->
+<div id="backend-banner" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#0b0f1a;border-bottom:1px solid #2a3a55;font-family:'DM Sans',sans-serif;transition:transform .4s ease">
+  <div id="banner-checking" style="display:flex;align-items:center;justify-content:center;gap:.75rem;padding:.75rem 1.5rem;background:rgba(59,130,246,.08)">
     <div style="width:10px;height:10px;border-radius:50%;background:#3b82f6;animation:pulse 1.2s infinite"></div>
     <span style="font-size:.85rem;color:#94a3b8">Connecting to backend…</span>
   </div>
-
-  <!-- Offline state -->
   <div id="banner-offline" style="display:none">
     <div style="background:rgba(239,68,68,.08);border-bottom:1px solid rgba(239,68,68,.2);padding:.65rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
       <div style="display:flex;align-items:center;gap:.6rem">
-        <span style="font-size:1rem">🔴</span>
+        <span>🔴</span>
         <span style="font-size:.85rem;color:#f87171;font-weight:600">Backend is not running</span>
-        <span style="font-size:.82rem;color:#94a3b8">— Open a terminal and run the command below, then refresh this page.</span>
+        <span style="font-size:.82rem;color:#94a3b8">— Open a terminal and run the command below, then refresh.</span>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem">
         <code style="background:#1a2236;border:1px solid #2a3a55;color:#60a5fa;font-size:.8rem;padding:.3rem .8rem;border-radius:6px;font-family:'JetBrains Mono',monospace">python lms_backend.py</code>
         <button onclick="checkBackend()" style="padding:.35rem .85rem;background:#3b82f6;color:#fff;border:none;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer">↺ Retry</button>
       </div>
     </div>
-    <!-- Credentials always visible when offline -->
     <div style="background:rgba(245,158,11,.05);padding:.55rem 1.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
-      <span style="font-size:.78rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Default Login Credentials</span>
+      <span style="font-size:.78rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Default Credentials</span>
       <span style="font-size:.82rem;color:#e2e8f0">🛡️ Admin — <code style="color:#60a5fa;font-family:'JetBrains Mono',monospace">admin</code> / <code style="color:#60a5fa;font-family:'JetBrains Mono',monospace">admin123</code></span>
-      <span style="font-size:.82rem;color:#e2e8f0">🎒 Students — set by admin when adding a student (username &amp; password you enter)</span>
+      <span style="font-size:.82rem;color:#e2e8f0">🎒 Students — set by admin when adding a student</span>
     </div>
   </div>
-
-  <!-- Online state -->
   <div id="banner-online" style="display:none">
     <div style="background:rgba(16,185,129,.07);border-bottom:1px solid rgba(16,185,129,.15);padding:.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
       <div style="display:flex;align-items:center;gap:.6rem">
-        <span style="font-size:1rem">🟢</span>
+        <span>🟢</span>
         <span style="font-size:.85rem;color:#34d399;font-weight:600">Backend is running</span>
         <span style="font-size:.82rem;color:#94a3b8">at <code style="color:#60a5fa;font-family:'JetBrains Mono',monospace">http://localhost:5000</code></span>
       </div>
       <button onclick="dismissBanner()" style="padding:.25rem .7rem;background:transparent;color:#64748b;border:1px solid #2a3a55;border-radius:6px;font-size:.78rem;cursor:pointer">✕ Dismiss</button>
     </div>
     <div style="background:rgba(59,130,246,.05);padding:.5rem 1.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
-      <span style="font-size:.78rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Default Login Credentials</span>
+      <span style="font-size:.78rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Default Credentials</span>
       <span style="font-size:.82rem;color:#e2e8f0">🛡️ Admin — username: <code style="color:#60a5fa;font-family:'JetBrains Mono',monospace">admin</code> &nbsp;|&nbsp; password: <code style="color:#60a5fa;font-family:'JetBrains Mono',monospace">admin123</code></span>
-      <span style="font-size:.82rem;color:#e2e8f0">🎒 Students — username &amp; password are whatever the admin sets when adding them</span>
+      <span style="font-size:.82rem;color:#e2e8f0">🎒 Students — whatever the admin sets when adding them</span>
     </div>
   </div>
 </div>
+<style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}</style>
 
-<style>
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-body{padding-top:0}
-#login-screen,#app{margin-top:0;transition:margin-top .3s ease}
-</style>
-
-<!-- ═══════════════════════════════════════
-     LOGIN SCREEN
-═══════════════════════════════════════ -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-bg"></div>
-
   <div class="login-left">
     <div class="login-branding">
       <div class="login-logo">🎓</div>
@@ -536,163 +259,102 @@ body{padding-top:0}
       <p>A complete learning management platform built for modern universities.</p>
     </div>
     <div class="login-features">
-      <div class="login-feature">
-        <div class="login-feature-icon">📊</div>
-        Track academic performance with real-time analytics
-      </div>
-      <div class="login-feature">
-        <div class="login-feature-icon">📅</div>
-        Manage attendance and view timetables instantly
-      </div>
-      <div class="login-feature">
-        <div class="login-feature-icon">📢</div>
-        Stay updated with announcements and assignments
-      </div>
-      <div class="login-feature">
-        <div class="login-feature-icon">🔒</div>
-        Secure role-based access for staff and students
-      </div>
+      <div class="login-feature"><div class="login-feature-icon">📊</div>Track academic performance with real-time analytics</div>
+      <div class="login-feature"><div class="login-feature-icon">📅</div>Manage attendance and view timetables instantly</div>
+      <div class="login-feature"><div class="login-feature-icon">📢</div>Stay updated with announcements and assignments</div>
+      <div class="login-feature"><div class="login-feature-icon">🔒</div>Secure role-based access for staff and students</div>
     </div>
   </div>
-
   <div class="login-right">
     <h2>Welcome back</h2>
     <p class="subtitle">Select your role and sign in to continue</p>
-
     <div class="role-selector">
-      <button class="role-btn active" onclick="selectRole('admin',this)">
-        <div class="role-icon">🛡️</div>
-        <div class="role-name">Administrator</div>
-      </button>
-      <button class="role-btn" onclick="selectRole('student',this)">
-        <div class="role-icon">🎒</div>
-        <div class="role-name">Student</div>
-      </button>
+      <button class="role-btn active" onclick="selectRole('admin',this)"><div class="role-icon">🛡️</div><div class="role-name">Administrator</div></button>
+      <button class="role-btn" onclick="selectRole('student',this)"><div class="role-icon">🎒</div><div class="role-name">Student</div></button>
     </div>
-
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" id="login-username" class="form-control" placeholder="Enter username" value="admin">
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="login-password" class="form-control" placeholder="Enter password" value="admin123">
-    </div>
-
-    <button class="login-btn" onclick="doLogin()">
-      Sign In →
-    </button>
-
+    <div class="form-group"><label>Username</label>
+      <input type="text" id="login-username" class="form-control" placeholder="Enter username" value="admin"></div>
+    <div class="form-group"><label>Password</label>
+      <input type="password" id="login-password" class="form-control" placeholder="Enter password" value="admin123"></div>
+    <button class="login-btn" onclick="doLogin()">Sign In →</button>
     <p style="font-size:.8rem;color:var(--text3);text-align:center;margin-top:1.5rem">
-      Default Admin: <span class="mono" style="color:var(--accent2)">admin / admin123</span>
-    </p>
+      Default Admin: <span class="mono" style="color:var(--accent2)">admin / admin123</span></p>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MAIN APP
-═══════════════════════════════════════ -->
+<!-- APP -->
 <div id="app" class="hidden">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-brand">
       <div class="sidebar-logo">🎓</div>
-      <div class="sidebar-brand-text">
-        <div class="name">UniLearn</div>
-        <div class="tagline">LMS Platform</div>
-      </div>
+      <div class="sidebar-brand-text"><div class="name">UniLearn</div><div class="tagline">LMS Platform</div></div>
     </div>
-
     <div class="sidebar-user flex items-center gap-3" style="margin:.75rem">
       <div class="avatar" id="sidebar-avatar">A</div>
-      <div class="info">
-        <div class="username" id="sidebar-name">Admin</div>
-        <div class="role" id="sidebar-role">Administrator</div>
-      </div>
+      <div class="info"><div class="username" id="sidebar-name">Admin</div><div class="role" id="sidebar-role">Administrator</div></div>
     </div>
-
     <nav class="sidebar-nav" id="sidebar-nav"></nav>
-
-    <div class="sidebar-footer">
-      <button class="logout-btn" onclick="logout()">🚪 Sign Out</button>
-    </div>
+    <div class="sidebar-footer"><button class="logout-btn" onclick="logout()">🚪 Sign Out</button></div>
   </aside>
-
-  <!-- MAIN -->
   <div class="main-content">
     <div class="topbar">
       <h2 id="topbar-title">Dashboard</h2>
-      <div class="topbar-right">
-        <span style="font-size:.82rem;color:var(--text3)" id="topbar-date"></span>
-      </div>
+      <div class="topbar-right"><span style="font-size:.82rem;color:var(--text3)" id="topbar-date"></span></div>
     </div>
-    <div class="page-content" id="page-content">
-      <!-- Sections rendered here -->
-    </div>
+    <div class="page-content" id="page-content"></div>
   </div>
 </div>
-
-<!-- MODAL CONTAINER -->
 <div id="modal-container"></div>
 
 <script>
-// ══════════════════════════════════════════════════
-const API = 'http://localhost:5000/api';
-let currentUser = null;
-let selectedRole = 'admin';
+const API='http://localhost:5000/api';
+let currentUser=null;
+let selectedRole='admin';
 
-// ── DATE ──
-document.getElementById('topbar-date').textContent =
-  new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+document.getElementById('topbar-date').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
 // ── TOAST ──
-function toast(msg, type='info'){
-  const el = document.createElement('div');
-  el.className = `toast-item toast-${type}`;
-  const icons = {success:'✅',error:'❌',info:'ℹ️'};
-  el.innerHTML = `<span>${icons[type]||'•'}</span><span>${msg}</span>`;
+function toast(msg,type='info'){
+  const el=document.createElement('div');
+  el.className=`toast-item toast-${type}`;
+  const icons={success:'✅',error:'❌',info:'ℹ️'};
+  el.innerHTML=`<span>${icons[type]||'•'}</span><span>${msg}</span>`;
   document.getElementById('toast').appendChild(el);
   setTimeout(()=>el.remove(),3500);
 }
 
 // ── API ──
-async function api(method, endpoint, data=null){
+async function api(method,endpoint,data=null){
   try{
-    const opts = {
-      method,
-      headers:{'Content-Type':'application/json'},
-      credentials:'include'
-    };
-    if(data) opts.body = JSON.stringify(data);
-    const res = await fetch(API+endpoint, opts);
+    const opts={method,headers:{'Content-Type':'application/json'},credentials:'include'};
+    if(data) opts.body=JSON.stringify(data);
+    const res=await fetch(API+endpoint,opts);
     return await res.json();
   }catch(e){
     toast('Backend offline – start lms_backend.py','error');
-    return {success:false,message:e.message};
+    return{success:false,message:e.message};
   }
 }
 
 // ── ROLE SELECT ──
-function selectRole(role, btn){
-  selectedRole = role;
+function selectRole(role,btn){
+  selectedRole=role;
   document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  const u = document.getElementById('login-username');
-  const p = document.getElementById('login-password');
+  const u=document.getElementById('login-username');
+  const p=document.getElementById('login-password');
   if(role==='admin'){u.value='admin';p.value='admin123';}
   else{u.value='';p.value='';}
 }
 
 // ── LOGIN ──
 async function doLogin(){
-  const username = document.getElementById('login-username').value.trim();
-  const password = document.getElementById('login-password').value.trim();
+  const username=document.getElementById('login-username').value.trim();
+  const password=document.getElementById('login-password').value.trim();
   if(!username||!password){toast('Please enter credentials','error');return;}
-
-  const res = await api('POST','/login',{username,password,role:selectedRole});
+  const res=await api('POST','/login',{username,password,role:selectedRole});
   if(res.success){
-    currentUser = res.user;
+    currentUser=res.user;
     document.getElementById('login-screen').classList.add('hidden');
     document.getElementById('app').classList.remove('hidden');
     initApp();
@@ -712,24 +374,22 @@ function logout(){
 
 // ── INIT APP ──
 function initApp(){
-  document.getElementById('sidebar-avatar').textContent = currentUser.full_name[0].toUpperCase();
-  document.getElementById('sidebar-name').textContent = currentUser.full_name;
-  document.getElementById('sidebar-role').textContent = currentUser.role==='admin'?'Administrator':'Student';
-
-  const nav = document.getElementById('sidebar-nav');
+  document.getElementById('sidebar-avatar').textContent=currentUser.full_name[0].toUpperCase();
+  document.getElementById('sidebar-name').textContent=currentUser.full_name;
+  document.getElementById('sidebar-role').textContent=currentUser.role==='admin'?'Administrator':'Student';
+  const nav=document.getElementById('sidebar-nav');
   nav.innerHTML='';
-  const content = document.getElementById('page-content');
+  const content=document.getElementById('page-content');
   content.innerHTML='';
-
   if(currentUser.role==='admin') buildAdminUI(nav,content);
   else buildStudentUI(nav,content);
 }
 
 // ══════════════════════════════════════════════════
-//   ADMIN UI
+//  ADMIN UI
 // ══════════════════════════════════════════════════
-function buildAdminUI(nav, content){
-  const sections = [
+function buildAdminUI(nav,content){
+  const sections=[
     {id:'dashboard',label:'Dashboard',icon:'📊',section:'Overview'},
     {id:'students',label:'Students',icon:'👥',section:'Management'},
     {id:'courses',label:'Courses',icon:'📚',section:'Management'},
@@ -740,114 +400,90 @@ function buildAdminUI(nav, content){
     {id:'announcements',label:'Announcements',icon:'📢',section:'Communication'},
     {id:'change_password',label:'Change Password',icon:'🔑',section:'Account'},
   ];
-
-  let currentSection = '';
+  let cur='';
   sections.forEach(s=>{
-    if(s.section!==currentSection){
-      currentSection=s.section;
-      nav.innerHTML += `<div class="nav-section"><div class="nav-section-label">${s.section}</div>`;
-    }
-    nav.innerHTML += `
-      <div class="nav-item" id="nav-${s.id}" onclick="showSection('${s.id}')">
-        <span class="nav-icon">${s.icon}</span>${s.label}
-      </div>`;
-    content.innerHTML += `<div class="section-page" id="sec-${s.id}"></div>`;
+    if(s.section!==cur){cur=s.section;nav.innerHTML+=`<div class="nav-section"><div class="nav-section-label">${s.section}</div>`;}
+    nav.innerHTML+=`<div class="nav-item" id="nav-${s.id}" onclick="showSection('${s.id}')"><span class="nav-icon">${s.icon}</span>${s.label}</div>`;
+    content.innerHTML+=`<div class="section-page" id="sec-${s.id}"></div>`;
   });
-  nav.innerHTML += '</div>';
-
+  nav.innerHTML+='</div>';
   showSection('dashboard');
 }
 
-// ── SHOW SECTION ──
 function showSection(id){
   document.querySelectorAll('.section-page').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const sec = document.getElementById(`sec-${id}`);
-  const nav = document.getElementById(`nav-${id}`);
+  const sec=document.getElementById(`sec-${id}`);
+  const nav=document.getElementById(`nav-${id}`);
   if(sec) sec.classList.add('active');
   if(nav) nav.classList.add('active');
-  document.getElementById('topbar-title').textContent = {
-    dashboard:'Dashboard',students:'Student Management',courses:'Course Management',
-    marks:'Marks & Grades',attendance:'Attendance Management',assignments:'Assignments',
-    timetable:'Timetable',announcements:'Announcements',
-    my_courses:'My Courses',my_marks:'My Marks & Grades',
-    my_attendance:'My Attendance',my_assignments:'My Assignments',my_timetable:'My Timetable'
-  }[id]||id;
-
-  const renders = {
-    dashboard:renderAdminDashboard,students:renderStudents,courses:renderCourses,
-    marks:renderMarks,attendance:renderAttendance,assignments:renderAssignments,
-    timetable:renderTimetable,announcements:renderAnnouncements,
+  const titles={
+    dashboard:currentUser?.role==='admin'?'Admin Dashboard':'My Dashboard',
+    students:'Student Management',courses:'Course Management',marks:'Marks & Grades',
+    attendance:'Attendance Management',assignments:'Assignments',timetable:'Timetable',
+    announcements:'Announcements',change_password:'Change Password',
+    my_courses:'My Courses',my_marks:'My Marks & Grades',my_attendance:'My Attendance',
+    my_assignments:'My Assignments',my_timetable:'My Timetable'
+  };
+  document.getElementById('topbar-title').textContent=titles[id]||id;
+  const renders={
+    dashboard:currentUser?.role==='admin'?renderAdminDashboard:renderStudentDashboardContent,
+    students:renderStudents,courses:renderCourses,marks:renderMarks,
+    attendance:renderAttendance,assignments:renderAssignments,timetable:renderTimetable,
+    announcements:renderAnnouncements,change_password:renderChangePassword,
     my_courses:renderStudentCourses,my_marks:renderStudentMarks,
     my_attendance:renderStudentAttendance,my_assignments:renderStudentAssignments,
     my_timetable:renderStudentTimetable
   };
-  if(renders[id]) renders[id](sec);
+  if(renders[id]&&sec) renders[id](sec);
 }
 
-// ─────────────────────────────────────
-// ADMIN DASHBOARD
-// ─────────────────────────────────────
+// ── ADMIN DASHBOARD ──
 async function renderAdminDashboard(sec){
   sec.innerHTML=`<div class="stat-grid">
-    <div class="stat-card"><div class="icon" style="background:rgba(59,130,246,.1)">👥</div>
-      <div class="value" id="ds-students">–</div><div class="label">Total Students</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(139,92,246,.1)">📚</div>
-      <div class="value" id="ds-courses">–</div><div class="label">Courses</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(245,158,11,.1)">📋</div>
-      <div class="value" id="ds-assignments">–</div><div class="label">Assignments</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(16,185,129,.1)">📢</div>
-      <div class="value" id="ds-announcements">–</div><div class="label">Announcements</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(59,130,246,.1)">👥</div><div class="value" id="ds-students">–</div><div class="label">Total Students</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(139,92,246,.1)">📚</div><div class="value" id="ds-courses">–</div><div class="label">Courses</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(245,158,11,.1)">📋</div><div class="value" id="ds-assignments">–</div><div class="label">Assignments</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(16,185,129,.1)">📢</div><div class="value" id="ds-announcements">–</div><div class="label">Announcements</div></div>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Top Performers</div>
-      <div class="card-subtitle">Highest average marks</div></div></div>
-      <div id="ds-top-students"></div>
-    </div>
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Department Breakdown</div></div></div>
-      <div id="ds-dept-stats"></div>
-    </div>
+    <div class="card"><div class="card-header"><div><div class="card-title">Top Performers</div><div class="card-subtitle">Highest average marks</div></div></div><div id="ds-top-students"></div></div>
+    <div class="card"><div class="card-header"><div><div class="card-title">Department Breakdown</div></div></div><div id="ds-dept-stats"></div></div>
   </div>`;
-  const r = await api('GET','/dashboard/admin');
-  if(!r.success) return;
-  const s = r.stats;
+  const r=await api('GET','/dashboard/admin');
+  if(!r.success)return;
+  const s=r.stats;
   document.getElementById('ds-students').textContent=s.total_students;
   document.getElementById('ds-courses').textContent=s.total_courses;
   document.getElementById('ds-assignments').textContent=s.total_assignments;
   document.getElementById('ds-announcements').textContent=s.total_announcements;
-  const topEl = document.getElementById('ds-top-students');
+  const topEl=document.getElementById('ds-top-students');
   if(!s.top_students.length){topEl.innerHTML='<div class="empty-state"><div class="icon">📊</div><p>No marks data yet</p></div>';return;}
-  topEl.innerHTML = s.top_students.map((st,i)=>`
+  topEl.innerHTML=s.top_students.map((st,i)=>`
     <div style="display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--border)">
       <div style="width:24px;height:24px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--text3)">${i+1}</div>
       <div style="flex:1"><div style="font-size:.88rem;font-weight:600">${st.full_name}</div>
       <div style="font-size:.75rem;color:var(--text3)">${st.roll_number} · ${st.department||'–'}</div></div>
       <div style="font-size:.9rem;font-weight:700;color:var(--green)">${st.avg_marks}%</div>
     </div>`).join('');
-  const deptEl = document.getElementById('ds-dept-stats');
+  const deptEl=document.getElementById('ds-dept-stats');
   if(!s.dept_stats.length){deptEl.innerHTML='<div class="empty-state"><div class="icon">🏛️</div><p>No data</p></div>';return;}
-  const total = s.dept_stats.reduce((a,d)=>a+d.cnt,0);
-  deptEl.innerHTML = s.dept_stats.map(d=>`
+  const total=s.dept_stats.reduce((a,d)=>a+d.cnt,0);
+  deptEl.innerHTML=s.dept_stats.map(d=>`
     <div style="margin-bottom:.8rem">
       <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.85rem">
-        <span>${d.department||'Unassigned'}</span>
-        <span style="color:var(--text2)">${d.cnt} students</span>
+        <span>${d.department||'Unassigned'}</span><span style="color:var(--text2)">${d.cnt} students</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" style="width:${(d.cnt/total*100).toFixed(0)}%"></div></div>
     </div>`).join('');
 }
 
-// ─────────────────────────────────────
-// STUDENTS
-// ─────────────────────────────────────
+// ── STUDENTS ──
 async function renderStudents(sec){
   sec.innerHTML=`
     <div class="card">
       <div class="card-header">
-        <div><div class="card-title">Student Management</div>
-        <div class="card-subtitle">Add, view and manage enrolled students</div></div>
+        <div><div class="card-title">Student Management</div><div class="card-subtitle">Add, view and manage enrolled students</div></div>
         <button class="btn btn-primary" onclick="openAddStudentModal()">+ Add Student</button>
       </div>
       <div class="search-bar" style="margin-bottom:1rem">
@@ -864,29 +500,28 @@ async function renderStudents(sec){
   loadStudents();
 }
 
-let allStudents = [];
+let allStudents=[];
 async function loadStudents(){
-  const r = await api('GET','/students');
-  if(!r.success) return;
-  allStudents = r.students;
+  const r=await api('GET','/students');
+  if(!r.success)return;
+  allStudents=r.students;
   renderStudentRows(allStudents);
 }
 function filterStudents(q){
-  const filtered = allStudents.filter(s=>
+  const f=allStudents.filter(s=>
     (s.full_name||'').toLowerCase().includes(q.toLowerCase())||
     (s.roll_number||'').toLowerCase().includes(q.toLowerCase())||
     (s.department||'').toLowerCase().includes(q.toLowerCase())
   );
-  renderStudentRows(filtered);
+  renderStudentRows(f);
 }
 function renderStudentRows(students){
-  const tbody = document.getElementById('students-tbody');
-  if(!tbody) return;
+  const tbody=document.getElementById('students-tbody');
+  if(!tbody)return;
   if(!students.length){
-    tbody.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="icon">👥</div><p>No students yet. Add your first student!</p></div></td></tr>`;
-    return;
+    tbody.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="icon">👥</div><p>No students yet. Add your first student!</p></div></td></tr>`;return;
   }
-  tbody.innerHTML = students.map(s=>`
+  tbody.innerHTML=students.map(s=>`
     <tr>
       <td><span class="mono badge badge-blue">${s.roll_number||'–'}</span></td>
       <td><strong>${s.full_name}</strong></td>
@@ -895,8 +530,9 @@ function renderStudentRows(students){
       <td>${s.semester?`Sem ${s.semester}`:'–'}</td>
       <td style="color:var(--text2);font-size:.82rem">${s.email||'–'}</td>
       <td>
-        <div style="display:flex;gap:.4rem">
+        <div style="display:flex;gap:.4rem;flex-wrap:wrap">
           <button class="btn btn-sm btn-secondary" onclick="openEnrollModal(${s.student_id})">Enroll</button>
+          <button class="btn btn-sm btn-purple" onclick="openResetPasswordModal(${s.student_id},'${s.full_name.replace(/'/g,"\\'")}','${s.username}')">🔑 Password</button>
           <button class="btn btn-sm btn-danger" onclick="deleteStudent(${s.student_id})">🗑</button>
         </div>
       </td>
@@ -906,16 +542,15 @@ function renderStudentRows(students){
 function openAddStudentModal(){
   openModal('Add New Student',`
     <div class="form-row">
-      <div class="form-group"><label>Full Name *</label>
-        <input class="form-control" id="m-name" placeholder="e.g. Ali Hassan"></div>
-      <div class="form-group"><label>Roll Number *</label>
-        <input class="form-control" id="m-roll" placeholder="e.g. 2024-CS-001"></div>
+      <div class="form-group"><label>Full Name *</label><input class="form-control" id="m-name" placeholder="e.g. Ali Hassan"></div>
+      <div class="form-group"><label>Roll Number *</label><input class="form-control" id="m-roll" placeholder="e.g. 2024-CS-001"></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Username *</label>
-        <input class="form-control" id="m-username" placeholder="login username"></div>
+      <div class="form-group"><label>Username *</label><input class="form-control" id="m-username" placeholder="login username"></div>
       <div class="form-group"><label>Password *</label>
-        <input type="password" class="form-control" id="m-password" placeholder="set password"></div>
+        <div class="pw-wrap"><input type="password" class="form-control" id="m-password" placeholder="set password">
+        <button class="pw-toggle" onclick="togglePw('m-password',this)">👁</button></div>
+      </div>
     </div>
     <div class="form-row">
       <div class="form-group"><label>Department</label>
@@ -924,85 +559,151 @@ function openAddStudentModal(){
           <option>Computer Science</option><option>Electrical Engineering</option>
           <option>Mechanical Engineering</option><option>Business Administration</option>
           <option>Mathematics</option><option>Physics</option><option>Chemistry</option>
-        </select>
-      </div>
+        </select></div>
       <div class="form-group"><label>Semester</label>
         <select class="form-control" id="m-semester">
           ${[1,2,3,4,5,6,7,8].map(i=>`<option value="${i}">Semester ${i}</option>`).join('')}
-        </select>
-      </div>
+        </select></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Email</label>
-        <input class="form-control" id="m-email" placeholder="student@university.edu" type="email"></div>
-      <div class="form-group"><label>Phone</label>
-        <input class="form-control" id="m-phone" placeholder="+92 ..."></div>
+      <div class="form-group"><label>Email</label><input class="form-control" id="m-email" placeholder="student@university.edu" type="email"></div>
+      <div class="form-group"><label>Phone</label><input class="form-control" id="m-phone" placeholder="+92 ..."></div>
     </div>
-    <div class="form-group"><label>Batch Year</label>
-      <input class="form-control" id="m-batch" placeholder="${new Date().getFullYear()}" type="number"></div>
-  `, async ()=>{
-    const data = {
-      full_name:val('m-name'),roll_number:val('m-roll'),username:val('m-username'),
-      password:val('m-password'),department:val('m-dept'),semester:val('m-semester'),
-      email:val('m-email'),phone:val('m-phone'),batch_year:val('m-batch')
-    };
-    if(!data.full_name||!data.roll_number||!data.username||!data.password){
-      toast('Please fill required fields','error');return false;
-    }
-    const r = await api('POST','/students',data);
+    <div class="form-group"><label>Batch Year</label><input class="form-control" id="m-batch" placeholder="${new Date().getFullYear()}" type="number"></div>
+  `,async()=>{
+    const data={full_name:val('m-name'),roll_number:val('m-roll'),username:val('m-username'),password:val('m-password'),department:val('m-dept'),semester:val('m-semester'),email:val('m-email'),phone:val('m-phone'),batch_year:val('m-batch')};
+    if(!data.full_name||!data.roll_number||!data.username||!data.password){toast('Please fill required fields','error');return false;}
+    const r=await api('POST','/students',data);
     if(r.success){toast('Student added successfully','success');closeModal();loadStudents();}
     else toast(r.message,'error');
   });
 }
 
+// ── RESET / VIEW STUDENT PASSWORD (admin sets a new one) ──
+function openResetPasswordModal(studentId, fullName, username){
+  openModal(`🔑 Reset Password — ${fullName}`,`
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);padding:1rem;margin-bottom:1.2rem">
+      <div style="font-size:.78rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem">Student Info</div>
+      <div style="font-size:.9rem;font-weight:600">${fullName}</div>
+      <div style="font-size:.82rem;color:var(--text2)">Username: <span class="mono">${username}</span></div>
+    </div>
+    <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">
+      ⚠️ Passwords are stored as secure hashes and cannot be viewed. You can set a new password for this student below.
+    </p>
+    <div class="form-group"><label>New Password *</label>
+      <div class="pw-wrap"><input type="password" class="form-control" id="rp-new" placeholder="Enter new password (min 6 chars)" oninput="checkPwStrength(this.value)">
+      <button class="pw-toggle" onclick="togglePw('rp-new',this)">👁</button></div>
+      <div style="margin-top:.5rem">
+        <div style="height:4px;border-radius:999px;background:var(--bg3);overflow:hidden">
+          <div id="pw-strength-bar" style="height:100%;border-radius:999px;width:0;transition:width .3s,background .3s"></div>
+        </div>
+        <div id="pw-strength-label" style="font-size:.75rem;color:var(--text3);margin-top:.25rem"></div>
+      </div>
+    </div>
+    <div class="form-group"><label>Confirm Password *</label>
+      <div class="pw-wrap"><input type="password" class="form-control" id="rp-confirm" placeholder="Re-enter password" oninput="checkPwMatch2()">
+      <button class="pw-toggle" onclick="togglePw('rp-confirm',this)">👁</button></div>
+      <div id="pw-match-label2" style="font-size:.75rem;margin-top:.25rem"></div>
+    </div>
+    <div id="rp-result" style="display:none;padding:.7rem 1rem;border-radius:8px;font-size:.85rem;margin-top:.5rem"></div>
+  `,async()=>{
+    const nw=document.getElementById('rp-new')?.value.trim()||'';
+    const cf=document.getElementById('rp-confirm')?.value.trim()||'';
+    const resultEl=document.getElementById('rp-result');
+    const showRes=(msg,ok)=>{
+      resultEl.style.display='block';resultEl.textContent=msg;
+      resultEl.style.background=ok?'rgba(16,185,129,.12)':'rgba(239,68,68,.12)';
+      resultEl.style.color=ok?'#34d399':'#f87171';
+      resultEl.style.border=`1px solid ${ok?'rgba(16,185,129,.3)':'rgba(239,68,68,.3)'}`;
+    };
+    if(!nw||!cf){showRes('Please fill both fields.',false);return false;}
+    if(nw!==cf){showRes('Passwords do not match.',false);return false;}
+    if(nw.length<6){showRes('Password must be at least 6 characters.',false);return false;}
+    // We use admin's own password as "current" via a special bypass in the backend.
+    // Since the backend /change-password requires current password, we call a direct
+    // admin-reset endpoint. We'll implement this as: admin provides their own password.
+    const adminPw=await promptAdminPassword();
+    if(!adminPw) return false;
+    const r=await api('POST','/admin-reset-password',{admin_user_id:currentUser.id,admin_password:adminPw,target_user_id:studentId,new_password:nw});
+    if(r.success){showRes('✅ Password updated successfully!',true);setTimeout(()=>{closeModal();toast(`Password reset for ${fullName}`,'success');},1200);return false;}
+    else{showRes('❌ '+r.message,false);return false;}
+  },'Set Password');
+}
+
+// We need to add an admin-override to lms_backend.py too — but for now ask admin for their own pw as auth
+function promptAdminPassword(){
+  return new Promise(resolve=>{
+    // Small inline prompt via a temporary overlay
+    const overlay=document.createElement('div');
+    overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:2000;display:flex;align-items:center;justify-content:center';
+    overlay.innerHTML=`
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;width:320px;box-shadow:var(--shadow)">
+        <div style="font-size:1rem;font-weight:600;margin-bottom:.75rem">🔐 Confirm Admin Password</div>
+        <p style="font-size:.83rem;color:var(--text2);margin-bottom:1rem">Enter your admin password to authorise this reset.</p>
+        <div class="pw-wrap" style="margin-bottom:1rem">
+          <input type="password" id="admin-auth-pw" class="form-control" placeholder="Your admin password" autofocus>
+          <button class="pw-toggle" onclick="togglePw('admin-auth-pw',this)">👁</button>
+        </div>
+        <div style="display:flex;gap:.5rem;justify-content:flex-end">
+          <button class="btn btn-secondary btn-sm" id="auth-cancel">Cancel</button>
+          <button class="btn btn-primary btn-sm" id="auth-ok">Confirm</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    const pw=overlay.querySelector('#admin-auth-pw');
+    overlay.querySelector('#auth-cancel').onclick=()=>{document.body.removeChild(overlay);resolve(null);};
+    overlay.querySelector('#auth-ok').onclick=()=>{const v=pw.value.trim();document.body.removeChild(overlay);resolve(v||null);};
+    pw.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=pw.value.trim();document.body.removeChild(overlay);resolve(v||null);}});
+  });
+}
+
+function checkPwMatch2(){
+  const nw=document.getElementById('rp-new')?.value||'';
+  const cf=document.getElementById('rp-confirm')?.value||'';
+  const lbl=document.getElementById('pw-match-label2');
+  if(!lbl||!cf)return;
+  if(nw===cf){lbl.textContent='✓ Passwords match';lbl.style.color='var(--green)';}
+  else{lbl.textContent='✗ Passwords do not match';lbl.style.color='var(--red)';}
+}
+
 async function deleteStudent(id){
-  if(!confirm('Delete this student? This removes all their records.')) return;
-  const r = await api('DELETE',`/students/${id}`);
+  if(!confirm('Delete this student? This removes all their records.'))return;
+  const r=await api('DELETE',`/students/${id}`);
   if(r.success){toast('Student deleted','success');loadStudents();}
   else toast(r.message,'error');
 }
 
 async function openEnrollModal(studentId){
-  const cr = await api('GET','/courses');
-  const sr = await api('GET',`/student/${studentId}/courses`);
-  const enrolled = sr.courses.map(c=>c.id);
+  const cr=await api('GET','/courses');
+  const sr=await api('GET',`/student/${studentId}/courses`);
+  const enrolled=sr.courses.map(c=>c.id);
   openModal('Enroll Student in Courses',`
     <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">Select a course to enroll this student:</p>
     ${cr.courses.map(c=>`
       <div style="display:flex;align-items:center;gap:.75rem;padding:.6rem;background:var(--bg3);border-radius:var(--radius2);margin-bottom:.4rem">
-        <div style="flex:1">
-          <div style="font-size:.88rem;font-weight:600">${c.course_code} – ${c.course_name}</div>
-          <div style="font-size:.75rem;color:var(--text3)">${c.department||''}  ${c.instructor?'· '+c.instructor:''}</div>
-        </div>
-        ${enrolled.includes(c.id)
-          ? '<span class="badge badge-green">✓ Enrolled</span>'
-          : `<button class="btn btn-sm btn-primary" onclick="enrollStudent(${studentId},${c.id})">Enroll</button>`}
+        <div style="flex:1"><div style="font-size:.88rem;font-weight:600">${c.course_code} – ${c.course_name}</div>
+        <div style="font-size:.75rem;color:var(--text3)">${c.department||''} ${c.instructor?'· '+c.instructor:''}</div></div>
+        ${enrolled.includes(c.id)?'<span class="badge badge-green">✓ Enrolled</span>':`<button class="btn btn-sm btn-primary" onclick="enrollStudent(${studentId},${c.id})">Enroll</button>`}
       </div>`).join('')||'<div class="empty-state"><p>No courses available</p></div>'}
   `,null,'Close');
 }
 
-async function enrollStudent(studentId, courseId){
-  const r = await api('POST','/enroll',{student_id:studentId,course_id:courseId});
+async function enrollStudent(studentId,courseId){
+  const r=await api('POST','/enroll',{student_id:studentId,course_id:courseId});
   if(r.success){toast('Student enrolled','success');closeModal();}
   else toast(r.message,'error');
 }
 
-// ─────────────────────────────────────
-// COURSES
-// ─────────────────────────────────────
+// ── COURSES ──
 async function renderCourses(sec){
   sec.innerHTML=`
     <div class="card">
       <div class="card-header">
-        <div><div class="card-title">Course Management</div>
-        <div class="card-subtitle">Manage academic courses and subjects</div></div>
+        <div><div class="card-title">Course Management</div><div class="card-subtitle">Manage academic courses and subjects</div></div>
         <button class="btn btn-primary" onclick="openAddCourseModal()">+ Add Course</button>
       </div>
       <div class="table-wrap"><table>
-        <thead><tr>
-          <th>Code</th><th>Course Name</th><th>Department</th>
-          <th>Instructor</th><th>Credits</th><th>Semester</th><th>Actions</th>
-        </tr></thead>
+        <thead><tr><th>Code</th><th>Course Name</th><th>Department</th><th>Instructor</th><th>Credits</th><th>Semester</th><th>Actions</th></tr></thead>
         <tbody id="courses-tbody"></tbody>
       </table></div>
     </div>`;
@@ -1010,14 +711,11 @@ async function renderCourses(sec){
 }
 
 async function loadCourses(){
-  const r = await api('GET','/courses');
-  const tbody = document.getElementById('courses-tbody');
-  if(!tbody) return;
-  if(!r.success||!r.courses.length){
-    tbody.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="icon">📚</div><p>No courses yet</p></div></td></tr>`;
-    return;
-  }
-  tbody.innerHTML = r.courses.map(c=>`
+  const r=await api('GET','/courses');
+  const tbody=document.getElementById('courses-tbody');
+  if(!tbody)return;
+  if(!r.success||!r.courses.length){tbody.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="icon">📚</div><p>No courses yet</p></div></td></tr>`;return;}
+  tbody.innerHTML=r.courses.map(c=>`
     <tr>
       <td><span class="mono badge badge-purple">${c.course_code}</span></td>
       <td><strong>${c.course_name}</strong></td>
@@ -1025,19 +723,15 @@ async function loadCourses(){
       <td>${c.instructor||'–'}</td>
       <td><span class="badge badge-blue">${c.credits} cr</span></td>
       <td>${c.semester?`Sem ${c.semester}`:'–'}</td>
-      <td>
-        <button class="btn btn-sm btn-danger" onclick="deleteCourse(${c.id})">🗑</button>
-      </td>
+      <td><button class="btn btn-sm btn-danger" onclick="deleteCourse(${c.id})">🗑</button></td>
     </tr>`).join('');
 }
 
 function openAddCourseModal(){
   openModal('Add New Course',`
     <div class="form-row">
-      <div class="form-group"><label>Course Code *</label>
-        <input class="form-control" id="c-code" placeholder="e.g. CS-301"></div>
-      <div class="form-group"><label>Course Name *</label>
-        <input class="form-control" id="c-name" placeholder="e.g. Data Structures"></div>
+      <div class="form-group"><label>Course Code *</label><input class="form-control" id="c-code" placeholder="e.g. CS-301"></div>
+      <div class="form-group"><label>Course Name *</label><input class="form-control" id="c-name" placeholder="e.g. Data Structures"></div>
     </div>
     <div class="form-row">
       <div class="form-group"><label>Department</label>
@@ -1047,51 +741,39 @@ function openAddCourseModal(){
           <option>Mechanical Engineering</option><option>Business Administration</option>
           <option>Mathematics</option><option>Physics</option>
         </select></div>
-      <div class="form-group"><label>Instructor</label>
-        <input class="form-control" id="c-instructor" placeholder="Dr. / Prof. name"></div>
+      <div class="form-group"><label>Instructor</label><input class="form-control" id="c-instructor" placeholder="Dr. / Prof. name"></div>
     </div>
     <div class="form-row">
       <div class="form-group"><label>Credits</label>
-        <select class="form-control" id="c-credits">
-          <option>1</option><option>2</option><option selected>3</option><option>4</option>
-        </select></div>
+        <select class="form-control" id="c-credits"><option>1</option><option>2</option><option selected>3</option><option>4</option></select></div>
       <div class="form-group"><label>Semester</label>
-        <select class="form-control" id="c-semester">
-          ${[1,2,3,4,5,6,7,8].map(i=>`<option value="${i}">Semester ${i}</option>`).join('')}
-        </select></div>
+        <select class="form-control" id="c-semester">${[1,2,3,4,5,6,7,8].map(i=>`<option value="${i}">Semester ${i}</option>`).join('')}</select></div>
     </div>
     <div class="form-group"><label>Description</label>
       <textarea class="form-control" id="c-desc" rows="2" placeholder="Short course description..."></textarea></div>
   `,async()=>{
-    const data = {
-      course_code:val('c-code'),course_name:val('c-name'),department:val('c-dept'),
-      instructor:val('c-instructor'),credits:val('c-credits'),semester:val('c-semester'),
-      description:val('c-desc')
-    };
+    const data={course_code:val('c-code'),course_name:val('c-name'),department:val('c-dept'),instructor:val('c-instructor'),credits:val('c-credits'),semester:val('c-semester'),description:val('c-desc')};
     if(!data.course_code||!data.course_name){toast('Code and Name required','error');return false;}
-    const r = await api('POST','/courses',data);
+    const r=await api('POST','/courses',data);
     if(r.success){toast('Course added','success');closeModal();loadCourses();}
     else toast(r.message,'error');
   });
 }
 
 async function deleteCourse(id){
-  if(!confirm('Delete this course?')) return;
-  const r = await api('DELETE',`/courses/${id}`);
+  if(!confirm('Delete this course?'))return;
+  const r=await api('DELETE',`/courses/${id}`);
   if(r.success){toast('Course deleted','success');loadCourses();}
   else toast(r.message,'error');
 }
 
-// ─────────────────────────────────────
-// MARKS
-// ─────────────────────────────────────
+// ── MARKS ──
 async function renderMarks(sec){
-  const [sr, cr] = await Promise.all([api('GET','/students'), api('GET','/courses')]);
+  const[sr,cr]=await Promise.all([api('GET','/students'),api('GET','/courses')]);
   sec.innerHTML=`
     <div class="card">
       <div class="card-header">
-        <div><div class="card-title">Marks & Grades</div>
-        <div class="card-subtitle">Assign and view student marks</div></div>
+        <div><div class="card-title">Marks & Grades</div><div class="card-subtitle">Assign and view student marks</div></div>
         <button class="btn btn-primary" onclick="openAddMarksModal(${JSON.stringify(sr.students||[]).replace(/"/g,'&quot;')},${JSON.stringify(cr.courses||[]).replace(/"/g,'&quot;')})">+ Add Marks</button>
       </div>
       <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap">
@@ -1105,10 +787,7 @@ async function renderMarks(sec){
         </select>
       </div>
       <div class="table-wrap"><table>
-        <thead><tr>
-          <th>Student</th><th>Roll No</th><th>Course</th><th>Exam Type</th>
-          <th>Marks</th><th>Total</th><th>%</th><th>Grade</th><th>Remarks</th><th></th>
-        </tr></thead>
+        <thead><tr><th>Student</th><th>Roll No</th><th>Course</th><th>Exam Type</th><th>Marks</th><th>Total</th><th>%</th><th>Grade</th><th>Remarks</th><th></th></tr></thead>
         <tbody id="marks-tbody"></tbody>
       </table></div>
     </div>`;
@@ -1116,30 +795,26 @@ async function renderMarks(sec){
 }
 
 async function loadMarksTable(){
-  const sFilter = document.getElementById('marks-filter-student')?.value||'';
-  const cFilter = document.getElementById('marks-filter-course')?.value||'';
-  const params = new URLSearchParams();
-  if(sFilter) params.append('student_id',sFilter);
-  if(cFilter) params.append('course_id',cFilter);
-  const r = await api('GET',`/marks?${params}`);
-  const tbody = document.getElementById('marks-tbody');
-  if(!tbody) return;
-  if(!r.success||!r.marks.length){
-    tbody.innerHTML=`<tr><td colspan="10"><div class="empty-state"><div class="icon">📝</div><p>No marks recorded yet</p></div></td></tr>`;
-    return;
-  }
-  tbody.innerHTML = r.marks.map(m=>{
-    const pct = ((m.marks_obtained/m.total_marks)*100).toFixed(1);
-    const gkey = m.grade?m.grade[0]:'F';
-    return `<tr>
+  const sF=document.getElementById('marks-filter-student')?.value||'';
+  const cF=document.getElementById('marks-filter-course')?.value||'';
+  const params=new URLSearchParams();
+  if(sF)params.append('student_id',sF);
+  if(cF)params.append('course_id',cF);
+  const r=await api('GET',`/marks?${params}`);
+  const tbody=document.getElementById('marks-tbody');
+  if(!tbody)return;
+  if(!r.success||!r.marks.length){tbody.innerHTML=`<tr><td colspan="10"><div class="empty-state"><div class="icon">📝</div><p>No marks recorded yet</p></div></td></tr>`;return;}
+  tbody.innerHTML=r.marks.map(m=>{
+    const pct=((m.marks_obtained/m.total_marks)*100).toFixed(1);
+    const gk=m.grade?m.grade[0]:'F';
+    return`<tr>
       <td>${m.full_name}</td>
       <td><span class="mono badge badge-blue">${m.roll_number||'–'}</span></td>
       <td>${m.course_code} – ${m.course_name}</td>
       <td><span class="badge badge-purple">${m.exam_type}</span></td>
-      <td class="mono">${m.marks_obtained}</td>
-      <td class="mono">${m.total_marks}</td>
+      <td class="mono">${m.marks_obtained}</td><td class="mono">${m.total_marks}</td>
       <td>${pct}%</td>
-      <td><span class="grade-pill grade-${gkey}">${m.grade}</span></td>
+      <td><span class="grade-pill grade-${gk}">${m.grade}</span></td>
       <td style="color:var(--text2);font-size:.8rem">${m.remarks||'–'}</td>
       <td><button class="btn btn-sm btn-danger" onclick="deleteMark(${m.id})">🗑</button></td>
     </tr>`;}).join('');
@@ -1162,144 +837,280 @@ function openAddMarksModal(students,courses){
     <div class="form-row">
       <div class="form-group"><label>Exam Type *</label>
         <select class="form-control" id="mk-type">
-          <option>Mid Term</option><option>Final Exam</option>
-          <option>Quiz 1</option><option>Quiz 2</option><option>Quiz 3</option>
-          <option>Assignment</option><option>Lab Work</option><option>Viva</option>
+          <option>Mid Term</option><option>Final Exam</option><option>Quiz 1</option>
+          <option>Quiz 2</option><option>Quiz 3</option><option>Assignment</option>
+          <option>Lab Work</option><option>Viva</option>
         </select></div>
       <div class="form-group"><label>Exam Date</label>
         <input type="date" class="form-control" id="mk-date" value="${new Date().toISOString().split('T')[0]}"></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Marks Obtained *</label>
-        <input type="number" class="form-control" id="mk-obtained" placeholder="e.g. 78" min="0"></div>
-      <div class="form-group"><label>Total Marks *</label>
-        <input type="number" class="form-control" id="mk-total" value="100" min="1"></div>
+      <div class="form-group"><label>Marks Obtained *</label><input type="number" class="form-control" id="mk-obtained" placeholder="e.g. 78" min="0"></div>
+      <div class="form-group"><label>Total Marks *</label><input type="number" class="form-control" id="mk-total" value="100" min="1"></div>
     </div>
-    <div class="form-group"><label>Remarks</label>
-      <input class="form-control" id="mk-remarks" placeholder="Optional remarks..."></div>
+    <div class="form-group"><label>Remarks</label><input class="form-control" id="mk-remarks" placeholder="Optional remarks..."></div>
   `,async()=>{
-    const data = {
-      student_id:val('mk-student'),course_id:val('mk-course'),
-      exam_type:val('mk-type'),marks_obtained:val('mk-obtained'),
-      total_marks:val('mk-total'),remarks:val('mk-remarks'),exam_date:val('mk-date')
-    };
+    const data={student_id:val('mk-student'),course_id:val('mk-course'),exam_type:val('mk-type'),marks_obtained:val('mk-obtained'),total_marks:val('mk-total'),remarks:val('mk-remarks'),exam_date:val('mk-date')};
     if(!data.student_id||!data.course_id||!data.marks_obtained){toast('Fill required fields','error');return false;}
-    const r = await api('POST','/marks',data);
+    const r=await api('POST','/marks',data);
     if(r.success){toast(`Marks saved – Grade: ${r.grade}`,'success');closeModal();loadMarksTable();}
     else toast(r.message,'error');
   });
 }
 
 async function deleteMark(id){
-  if(!confirm('Delete this mark?')) return;
-  const r = await api('DELETE',`/marks/${id}`);
+  if(!confirm('Delete this mark?'))return;
+  const r=await api('DELETE',`/marks/${id}`);
   if(r.success){toast('Deleted','success');loadMarksTable();}
 }
 
-// ─────────────────────────────────────
-// ATTENDANCE
-// ─────────────────────────────────────
+// ══════════════════════════════════════════════════
+//  ATTENDANCE (ADMIN) — per-course tabs + check view
+// ══════════════════════════════════════════════════
+let attCourses=[];
+let attActiveCourseId=null;
+let attActiveView='mark'; // 'mark' | 'check'
+
 async function renderAttendance(sec){
-  const [sr, cr] = await Promise.all([api('GET','/students'), api('GET','/courses')]);
+  const[sr,cr]=await Promise.all([api('GET','/students'),api('GET','/courses')]);
+  attCourses=cr.courses||[];
+  const students=sr.students||[];
+
   sec.innerHTML=`
-    <div class="card">
-      <div class="card-header">
+    <div class="card" style="margin-bottom:1rem">
+      <div class="card-header" style="margin-bottom:.75rem">
         <div><div class="card-title">Attendance Management</div>
-        <div class="card-subtitle">Mark and track student attendance</div></div>
-        <button class="btn btn-primary" onclick="openMarkAttendanceModal(${JSON.stringify(sr.students||[]).replace(/"/g,'&quot;')},${JSON.stringify(cr.courses||[]).replace(/"/g,'&quot;')})">✓ Mark Attendance</button>
+        <div class="card-subtitle">Select a course, then mark or check attendance</div></div>
+        <button class="btn btn-primary" id="att-action-btn" onclick="attToggleView()">📋 Check Attendance</button>
       </div>
-      <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap">
-        <select class="form-control" style="width:200px" id="att-filter-student" onchange="loadAttTable()">
-          <option value="">All Students</option>
-          ${(sr.students||[]).map(s=>`<option value="${s.student_id}">${s.full_name} (${s.roll_number||''})</option>`).join('')}
-        </select>
-        <select class="form-control" style="width:200px" id="att-filter-course" onchange="loadAttTable()">
-          <option value="">All Courses</option>
-          ${(cr.courses||[]).map(c=>`<option value="${c.id}">${c.course_code}</option>`).join('')}
-        </select>
+      <!-- Course tab strip -->
+      <div class="course-tab-strip" id="att-course-tabs">
+        ${attCourses.length
+          ? attCourses.map(c=>`<div class="course-tab" data-cid="${c.id}" onclick="attSelectCourse(${c.id},this)">${c.course_code}</div>`).join('')
+          : '<span style="color:var(--text3);font-size:.85rem">No courses available</span>'}
       </div>
+      <div id="att-course-label" style="font-size:.85rem;color:var(--text2);margin-bottom:1rem"></div>
+    </div>
+
+    <!-- MARK ATTENDANCE PANEL -->
+    <div id="att-mark-panel" class="card" style="display:none">
+      <div class="card-header">
+        <div><div class="card-title">✏️ Mark Attendance</div><div class="card-subtitle" id="att-mark-subtitle"></div></div>
+        <div style="display:flex;gap:.5rem;align-items:center">
+          <input type="date" class="form-control" id="att-date" value="${new Date().toISOString().split('T')[0]}" style="width:160px">
+          <button class="btn btn-success" onclick="saveAttendance()">💾 Save</button>
+        </div>
+      </div>
+      <div id="att-student-list-panel"></div>
+    </div>
+
+    <!-- CHECK ATTENDANCE PANEL -->
+    <div id="att-check-panel" class="card" style="display:none">
+      <div class="card-header">
+        <div><div class="card-title">🔍 Check Attendance</div><div class="card-subtitle" id="att-check-subtitle"></div></div>
+        <div style="display:flex;gap:.5rem;align-items:center">
+          <select class="form-control" id="att-check-student" style="width:220px" onchange="loadCheckAttendance()">
+            <option value="">All Students</option>
+            ${students.map(s=>`<option value="${s.student_id}">${s.full_name} (${s.roll_number||''})</option>`).join('')}
+          </select>
+        </div>
+      </div>
+      <!-- Summary cards -->
+      <div id="att-check-summary" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem;margin-bottom:1.2rem"></div>
+      <!-- Records table -->
       <div class="table-wrap"><table>
-        <thead><tr>
-          <th>Date</th><th>Student</th><th>Roll No</th><th>Course</th><th>Status</th><th>Remarks</th>
-        </tr></thead>
-        <tbody id="att-tbody"></tbody>
+        <thead><tr><th>Date</th><th>Student</th><th>Roll No</th><th>Status</th><th>Remarks</th></tr></thead>
+        <tbody id="att-check-tbody"></tbody>
       </table></div>
     </div>`;
-  loadAttTable();
+
+  // Auto-select first course
+  if(attCourses.length){
+    const firstTab=sec.querySelector('.course-tab');
+    attSelectCourse(attCourses[0].id, firstTab);
+  }
+  // Default view is mark
+  attActiveView='mark';
+  document.getElementById('att-action-btn').textContent='📋 Check Attendance';
+  _renderMarkPanel(students);
 }
 
-async function loadAttTable(){
-  const sFilter = document.getElementById('att-filter-student')?.value||'';
-  const cFilter = document.getElementById('att-filter-course')?.value||'';
-  const params = new URLSearchParams();
-  if(sFilter) params.append('student_id',sFilter);
-  if(cFilter) params.append('course_id',cFilter);
-  const r = await api('GET',`/attendance?${params}`);
-  const tbody = document.getElementById('att-tbody');
-  if(!tbody) return;
-  if(!r.success||!r.attendance.length){
-    tbody.innerHTML=`<tr><td colspan="6"><div class="empty-state"><div class="icon">📅</div><p>No attendance records</p></div></td></tr>`;
-    return;
+function attSelectCourse(courseId, tabEl){
+  attActiveCourseId=courseId;
+  document.querySelectorAll('.course-tab').forEach(t=>t.classList.remove('active'));
+  if(tabEl) tabEl.classList.add('active');
+  const course=attCourses.find(c=>c.id===courseId);
+  const label=document.getElementById('att-course-label');
+  if(label&&course) label.textContent=`📚 ${course.course_name}${course.instructor?' · '+course.instructor:''}`;
+  // refresh whichever panel is open
+  if(attActiveView==='mark') _refreshMarkPanel();
+  else loadCheckAttendance();
+}
+
+function attToggleView(){
+  const btn=document.getElementById('att-action-btn');
+  const markPanel=document.getElementById('att-mark-panel');
+  const checkPanel=document.getElementById('att-check-panel');
+  if(attActiveView==='mark'){
+    attActiveView='check';
+    btn.textContent='✏️ Mark Attendance';
+    markPanel.style.display='none';
+    checkPanel.style.display='block';
+    loadCheckAttendance();
+  } else {
+    attActiveView='mark';
+    btn.textContent='📋 Check Attendance';
+    checkPanel.style.display='none';
+    markPanel.style.display='block';
+    _refreshMarkPanel();
   }
-  tbody.innerHTML = r.attendance.map(a=>`
+}
+
+let _attStudentsCache=[];
+function _renderMarkPanel(students){
+  _attStudentsCache=students;
+  _refreshMarkPanel();
+}
+function _refreshMarkPanel(){
+  const panel=document.getElementById('att-mark-panel');
+  if(!panel)return;
+  panel.style.display='block';
+  if(!attActiveCourseId){
+    document.getElementById('att-student-list-panel').innerHTML='<div class="empty-state"><p>Select a course above</p></div>';return;
+  }
+  const course=attCourses.find(c=>c.id===attActiveCourseId);
+  const sub=document.getElementById('att-mark-subtitle');
+  if(sub&&course) sub.textContent=`${course.course_code} – ${course.course_name}`;
+
+  const listEl=document.getElementById('att-student-list-panel');
+  if(!_attStudentsCache.length){listEl.innerHTML='<div class="empty-state"><div class="icon">👥</div><p>No students found</p></div>';return;}
+  listEl.innerHTML=`
+    <div style="display:flex;gap:.5rem;margin-bottom:.75rem">
+      <button class="btn btn-sm btn-success" onclick="attMarkAll('present')">✅ All Present</button>
+      <button class="btn btn-sm btn-danger" onclick="attMarkAll('absent')">❌ All Absent</button>
+    </div>
+    <div style="max-height:340px;overflow-y:auto">
+      ${_attStudentsCache.map(s=>`
+        <div style="display:flex;align-items:center;gap:1rem;padding:.55rem .75rem;border-bottom:1px solid var(--border);border-radius:6px">
+          <div style="flex:1;font-size:.88rem"><strong>${s.full_name}</strong>
+            <span style="color:var(--text3);font-size:.78rem;margin-left:.5rem">${s.roll_number||''}</span>
+          </div>
+          <div style="display:flex;gap:.3rem">
+            <button class="att-quick-btn" data-sid="${s.student_id}" data-val="present"
+              onclick="attQuickMark(${s.student_id},'present',this)"
+              style="padding:.3rem .7rem;border-radius:6px;font-size:.78rem;font-weight:600;border:1px solid rgba(16,185,129,.4);background:rgba(16,185,129,.15);color:#34d399;cursor:pointer;transition:all .15s">P</button>
+            <button class="att-quick-btn" data-sid="${s.student_id}" data-val="absent"
+              onclick="attQuickMark(${s.student_id},'absent',this)"
+              style="padding:.3rem .7rem;border-radius:6px;font-size:.78rem;font-weight:600;border:1px solid rgba(239,68,68,.4);background:rgba(239,68,68,.15);color:#f87171;cursor:pointer;transition:all .15s">A</button>
+            <button class="att-quick-btn" data-sid="${s.student_id}" data-val="leave"
+              onclick="attQuickMark(${s.student_id},'leave',this)"
+              style="padding:.3rem .7rem;border-radius:6px;font-size:.78rem;font-weight:600;border:1px solid rgba(245,158,11,.4);background:rgba(245,158,11,.15);color:#fcd34d;cursor:pointer;transition:all .15s">L</button>
+          </div>
+          <input type="hidden" id="att-status-${s.student_id}" value="present">
+        </div>`).join('')}
+    </div>`;
+  // Default all to present (highlight P buttons)
+  _attStudentsCache.forEach(s=>_highlightAttBtn(s.student_id,'present'));
+}
+
+function attQuickMark(sid,val,btn){
+  document.getElementById(`att-status-${sid}`).value=val;
+  _highlightAttBtn(sid,val);
+}
+function _highlightAttBtn(sid,val){
+  document.querySelectorAll(`.att-quick-btn[data-sid="${sid}"]`).forEach(b=>{
+    const bval=b.getAttribute('data-val');
+    const colors={present:'rgba(16,185,129,.15)',absent:'rgba(239,68,68,.15)',leave:'rgba(245,158,11,.15)'};
+    const borders={present:'rgba(16,185,129,.4)',absent:'rgba(239,68,68,.4)',leave:'rgba(245,158,11,.4)'};
+    const texts={present:'#34d399',absent:'#f87171',leave:'#fcd34d'};
+    if(bval===val){
+      b.style.background=colors[val];b.style.borderColor=borders[val];b.style.color=texts[val];
+      b.style.transform='scale(1.15)';b.style.boxShadow=`0 0 0 2px ${borders[val]}`;
+    } else {
+      b.style.background='var(--bg3)';b.style.borderColor='var(--border)';b.style.color='var(--text3)';
+      b.style.transform='scale(1)';b.style.boxShadow='none';
+    }
+  });
+}
+function attMarkAll(val){
+  _attStudentsCache.forEach(s=>{
+    document.getElementById(`att-status-${s.student_id}`).value=val;
+    _highlightAttBtn(s.student_id,val);
+  });
+}
+
+async function saveAttendance(){
+  if(!attActiveCourseId){toast('Select a course first','error');return;}
+  const date=document.getElementById('att-date')?.value;
+  if(!date){toast('Select a date','error');return;}
+  const records=_attStudentsCache.map(s=>({
+    student_id:s.student_id,course_id:attActiveCourseId,date,
+    status:document.getElementById(`att-status-${s.student_id}`)?.value||'present'
+  })).filter(r=>r.student_id);
+  if(!records.length){toast('No students to mark','error');return;}
+  const r=await api('POST','/attendance',{records});
+  if(r.success) toast(r.message,'success');
+  else toast(r.message,'error');
+}
+
+async function loadCheckAttendance(){
+  if(!attActiveCourseId) return;
+  const course=attCourses.find(c=>c.id===attActiveCourseId);
+  const sub=document.getElementById('att-check-subtitle');
+  if(sub&&course) sub.textContent=`${course.course_code} – ${course.course_name}`;
+
+  const sFilter=document.getElementById('att-check-student')?.value||'';
+  const params=new URLSearchParams();
+  params.append('course_id',attActiveCourseId);
+  if(sFilter) params.append('student_id',sFilter);
+
+  const[ar,sr]=await Promise.all([
+    api('GET',`/attendance?${params}`),
+    api('GET',`/attendance/summary/${sFilter||0}`)
+  ]);
+
+  // Summary
+  const sumEl=document.getElementById('att-check-summary');
+  if(sumEl){
+    // compute from records for current course
+    const recs=ar.attendance||[];
+    const total=recs.length;
+    const present=recs.filter(r=>r.status==='present').length;
+    const absent=recs.filter(r=>r.status==='absent').length;
+    const leave=recs.filter(r=>r.status==='leave').length;
+    const pct=total?((present/total)*100).toFixed(1):0;
+    sumEl.innerHTML=`
+      <div class="stat-card" style="margin:0"><div class="icon" style="background:rgba(59,130,246,.1)">📊</div><div class="value">${total}</div><div class="label">Total Classes</div></div>
+      <div class="stat-card" style="margin:0"><div class="icon" style="background:rgba(16,185,129,.1)">✅</div><div class="value" style="color:var(--green)">${present}</div><div class="label">Present</div></div>
+      <div class="stat-card" style="margin:0"><div class="icon" style="background:rgba(239,68,68,.1)">❌</div><div class="value" style="color:var(--red)">${absent}</div><div class="label">Absent</div></div>
+      <div class="stat-card" style="margin:0"><div class="icon" style="background:rgba(245,158,11,.1)">🟡</div><div class="value" style="color:#fcd34d">${leave}</div><div class="label">Leave</div></div>
+      <div class="stat-card" style="margin:0"><div class="icon" style="background:rgba(139,92,246,.1)">📈</div>
+        <div class="value" style="color:${pct>=75?'var(--green)':'var(--red)'}">${pct}%</div>
+        <div class="label">Attendance Rate</div></div>`;
+  }
+
+  // Table
+  const tbody=document.getElementById('att-check-tbody');
+  if(!tbody)return;
+  const recs=ar.attendance||[];
+  if(!recs.length){tbody.innerHTML=`<tr><td colspan="5"><div class="empty-state"><div class="icon">📅</div><p>No records for this course${sFilter?' / student':''}</p></div></td></tr>`;return;}
+  tbody.innerHTML=recs.map(a=>`
     <tr>
       <td class="mono">${a.date}</td>
       <td>${a.full_name}</td>
       <td><span class="mono badge badge-blue">${a.roll_number||'–'}</span></td>
-      <td>${a.course_code} – ${a.course_name}</td>
       <td><span class="att-status att-${a.status}">${a.status.toUpperCase()}</span></td>
       <td style="color:var(--text2);font-size:.82rem">${a.remarks||'–'}</td>
     </tr>`).join('');
 }
 
-function openMarkAttendanceModal(students,courses){
-  openModal('Mark Attendance',`
-    <div class="form-row">
-      <div class="form-group"><label>Course *</label>
-        <select class="form-control" id="at-course">
-          <option value="">Select Course...</option>
-          ${courses.map(c=>`<option value="${c.id}">${c.course_code} – ${c.course_name}</option>`).join('')}
-        </select></div>
-      <div class="form-group"><label>Date *</label>
-        <input type="date" class="form-control" id="at-date" value="${new Date().toISOString().split('T')[0]}"></div>
-    </div>
-    <div style="max-height:280px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius2);padding:.5rem" id="att-student-list">
-      ${students.map(s=>`
-        <div style="display:flex;align-items:center;gap:1rem;padding:.5rem;border-bottom:1px solid var(--border)">
-          <div style="flex:1;font-size:.88rem"><strong>${s.full_name}</strong>
-          <span style="color:var(--text3);font-size:.78rem;margin-left:.5rem">${s.roll_number||''}</span></div>
-          <select class="form-control" style="width:130px" id="att-status-${s.student_id}" data-sid="${s.student_id}">
-            <option value="present">✅ Present</option>
-            <option value="absent">❌ Absent</option>
-            <option value="leave">🟡 Leave</option>
-          </select>
-        </div>`).join('')||'<p style="text-align:center;color:var(--text3);padding:1rem">No students found</p>'}
-    </div>
-  `,async()=>{
-    const courseId = val('at-course');
-    const date = val('at-date');
-    if(!courseId||!date){toast('Select course and date','error');return false;}
-    const records = students.map(s=>({
-      student_id:s.student_id,course_id:courseId,date,
-      status:document.getElementById(`att-status-${s.student_id}`)?.value||'present'
-    })).filter(r=>r.student_id);
-    if(!records.length){toast('No students to mark','error');return false;}
-    const r = await api('POST','/attendance',{records});
-    if(r.success){toast(r.message,'success');closeModal();loadAttTable();}
-    else toast(r.message,'error');
-  });
-}
-
-// ─────────────────────────────────────
-// ASSIGNMENTS
-// ─────────────────────────────────────
+// ── ASSIGNMENTS ──
 async function renderAssignments(sec){
-  const cr = await api('GET','/courses');
+  const cr=await api('GET','/courses');
   sec.innerHTML=`
     <div class="card">
       <div class="card-header">
-        <div><div class="card-title">Assignments</div>
-        <div class="card-subtitle">Create and manage assignments</div></div>
+        <div><div class="card-title">Assignments</div><div class="card-subtitle">Create and manage assignments</div></div>
         <button class="btn btn-primary" onclick="openAddAssignModal(${JSON.stringify(cr.courses||[]).replace(/"/g,'&quot;')})">+ New Assignment</button>
       </div>
       <div id="assign-list"></div>
@@ -1308,17 +1119,14 @@ async function renderAssignments(sec){
 }
 
 async function loadAssignments(){
-  const r = await api('GET','/assignments');
-  const el = document.getElementById('assign-list');
-  if(!el) return;
-  if(!r.success||!r.assignments.length){
-    el.innerHTML='<div class="empty-state"><div class="icon">📋</div><p>No assignments yet</p></div>';return;
-  }
-  const now = new Date();
-  el.innerHTML = r.assignments.map(a=>{
-    const due = new Date(a.due_date);
-    const overdue = due<now;
-    return `<div class="announce-item">
+  const r=await api('GET','/assignments');
+  const el=document.getElementById('assign-list');
+  if(!el)return;
+  if(!r.success||!r.assignments.length){el.innerHTML='<div class="empty-state"><div class="icon">📋</div><p>No assignments yet</p></div>';return;}
+  const now=new Date();
+  el.innerHTML=r.assignments.map(a=>{
+    const due=new Date(a.due_date);const overdue=due<now;
+    return`<div class="announce-item">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem">
         <div style="flex:1">
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem">
@@ -1344,15 +1152,12 @@ function openAddAssignModal(courses){
         <option value="">Select Course...</option>
         ${courses.map(c=>`<option value="${c.id}">${c.course_code} – ${c.course_name}</option>`).join('')}
       </select></div>
-    <div class="form-group"><label>Title *</label>
-      <input class="form-control" id="as-title" placeholder="Assignment title"></div>
+    <div class="form-group"><label>Title *</label><input class="form-control" id="as-title" placeholder="Assignment title"></div>
     <div class="form-group"><label>Description</label>
       <textarea class="form-control" id="as-desc" rows="3" placeholder="Assignment instructions..."></textarea></div>
     <div class="form-row">
-      <div class="form-group"><label>Due Date</label>
-        <input type="date" class="form-control" id="as-due"></div>
-      <div class="form-group"><label>Total Marks</label>
-        <input type="number" class="form-control" id="as-marks" value="100"></div>
+      <div class="form-group"><label>Due Date</label><input type="date" class="form-control" id="as-due"></div>
+      <div class="form-group"><label>Total Marks</label><input type="number" class="form-control" id="as-marks" value="100"></div>
     </div>
   `,async()=>{
     const data={course_id:val('as-course'),title:val('as-title'),description:val('as-desc'),due_date:val('as-due'),total_marks:val('as-marks')};
@@ -1363,16 +1168,14 @@ function openAddAssignModal(courses){
   });
 }
 async function deleteAssignment(id){
-  if(!confirm('Delete assignment?')) return;
+  if(!confirm('Delete assignment?'))return;
   const r=await api('DELETE',`/assignments/${id}`);
   if(r.success){toast('Deleted','success');loadAssignments();}
 }
 
-// ─────────────────────────────────────
-// TIMETABLE
-// ─────────────────────────────────────
+// ── TIMETABLE ──
 async function renderTimetable(sec){
-  const cr = await api('GET','/courses');
+  const cr=await api('GET','/courses');
   sec.innerHTML=`
     <div class="card">
       <div class="card-header">
@@ -1380,9 +1183,7 @@ async function renderTimetable(sec){
         <button class="btn btn-primary" onclick="openAddTimetableModal(${JSON.stringify(cr.courses||[]).replace(/"/g,'&quot;')})">+ Add Slot</button>
       </div>
       <div class="table-wrap"><table>
-        <thead><tr>
-          <th>Day</th><th>Time</th><th>Course</th><th>Room</th><th>Department</th><th>Semester</th><th></th>
-        </tr></thead>
+        <thead><tr><th>Day</th><th>Time</th><th>Course</th><th>Room</th><th>Department</th><th>Semester</th><th></th></tr></thead>
         <tbody id="tt-tbody"></tbody>
       </table></div>
     </div>`;
@@ -1390,19 +1191,16 @@ async function renderTimetable(sec){
 }
 
 async function loadTimetable(){
-  const r = await api('GET','/timetable');
-  const tbody = document.getElementById('tt-tbody');
-  if(!tbody) return;
-  if(!r.success||!r.timetable.length){
-    tbody.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="icon">🕐</div><p>No timetable entries</p></div></td></tr>`;return;
-  }
+  const r=await api('GET','/timetable');
+  const tbody=document.getElementById('tt-tbody');
+  if(!tbody)return;
+  if(!r.success||!r.timetable.length){tbody.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="icon">🕐</div><p>No timetable entries</p></div></td></tr>`;return;}
   tbody.innerHTML=r.timetable.map(t=>`
     <tr>
       <td><span class="badge badge-blue">${t.day_of_week}</span></td>
       <td class="mono">${t.start_time} – ${t.end_time}</td>
       <td>${t.course_code} – ${t.course_name}</td>
-      <td>${t.room||'–'}</td>
-      <td>${t.department||'–'}</td>
+      <td>${t.room||'–'}</td><td>${t.department||'–'}</td>
       <td>${t.semester?`Sem ${t.semester}`:'–'}</td>
       <td><button class="btn btn-sm btn-danger" onclick="deleteTimetable(${t.id})">🗑</button></td>
     </tr>`).join('');
@@ -1421,18 +1219,14 @@ function openAddTimetableModal(courses){
           <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
           <option>Thursday</option><option>Friday</option><option>Saturday</option>
         </select></div>
-      <div class="form-group"><label>Room</label>
-        <input class="form-control" id="tt-room" placeholder="e.g. Lab-3, Hall-A"></div>
+      <div class="form-group"><label>Room</label><input class="form-control" id="tt-room" placeholder="e.g. Lab-3, Hall-A"></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Start Time *</label>
-        <input type="time" class="form-control" id="tt-start"></div>
-      <div class="form-group"><label>End Time *</label>
-        <input type="time" class="form-control" id="tt-end"></div>
+      <div class="form-group"><label>Start Time *</label><input type="time" class="form-control" id="tt-start"></div>
+      <div class="form-group"><label>End Time *</label><input type="time" class="form-control" id="tt-end"></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Department</label>
-        <input class="form-control" id="tt-dept" placeholder="Department name"></div>
+      <div class="form-group"><label>Department</label><input class="form-control" id="tt-dept" placeholder="Department name"></div>
       <div class="form-group"><label>Semester</label>
         <select class="form-control" id="tt-sem">
           ${[1,2,3,4,5,6,7,8].map(i=>`<option value="${i}">Sem ${i}</option>`).join('')}
@@ -1447,14 +1241,12 @@ function openAddTimetableModal(courses){
   });
 }
 async function deleteTimetable(id){
-  if(!confirm('Remove this slot?')) return;
+  if(!confirm('Remove this slot?'))return;
   const r=await api('DELETE',`/timetable/${id}`);
   if(r.success){toast('Removed','success');loadTimetable();}
 }
 
-// ─────────────────────────────────────
-// ANNOUNCEMENTS
-// ─────────────────────────────────────
+// ── ANNOUNCEMENTS ──
 async function renderAnnouncements(sec){
   sec.innerHTML=`
     <div class="card">
@@ -1468,13 +1260,11 @@ async function renderAnnouncements(sec){
 }
 
 async function loadAnnouncements(){
-  const r = await api('GET','/announcements');
-  const el = document.getElementById('ann-list');
-  if(!el) return;
-  if(!r.success||!r.announcements.length){
-    el.innerHTML='<div class="empty-state"><div class="icon">📢</div><p>No announcements yet</p></div>';return;
-  }
-  el.innerHTML = r.announcements.map(a=>`
+  const r=await api('GET','/announcements');
+  const el=document.getElementById('ann-list');
+  if(!el)return;
+  if(!r.success||!r.announcements.length){el.innerHTML='<div class="empty-state"><div class="icon">📢</div><p>No announcements yet</p></div>';return;}
+  el.innerHTML=r.announcements.map(a=>`
     <div class="announce-item">
       <div style="display:flex;align-items:flex-start;justify-content:space-between">
         <div style="flex:1">
@@ -1496,8 +1286,7 @@ async function loadAnnouncements(){
 
 function openAddAnnModal(){
   openModal('Post Announcement',`
-    <div class="form-group"><label>Title *</label>
-      <input class="form-control" id="an-title" placeholder="Announcement title"></div>
+    <div class="form-group"><label>Title *</label><input class="form-control" id="an-title" placeholder="Announcement title"></div>
     <div class="form-group"><label>Content *</label>
       <textarea class="form-control" id="an-content" rows="4" placeholder="Announcement details..."></textarea></div>
     <div class="form-row">
@@ -1519,16 +1308,152 @@ function openAddAnnModal(){
   });
 }
 async function deleteAnnouncement(id){
-  if(!confirm('Delete announcement?')) return;
+  if(!confirm('Delete announcement?'))return;
   const r=await api('DELETE',`/announcements/${id}`);
   if(r.success){toast('Deleted','success');loadAnnouncements();}
 }
 
 // ══════════════════════════════════════════════════
-//   STUDENT UI
+//  CHANGE PASSWORD (glitch-free)
 // ══════════════════════════════════════════════════
-function buildStudentUI(nav, content){
-  const sections = [
+function renderChangePassword(sec){
+  sec.innerHTML=`
+    <div style="max-width:480px;margin:0 auto">
+      <div class="card">
+        <div class="card-header">
+          <div><div class="card-title">🔑 Change Admin Password</div>
+          <div class="card-subtitle">Only you can see and change your password</div></div>
+        </div>
+
+        <div class="form-group"><label>Current Password</label>
+          <div class="pw-wrap"><input type="password" class="form-control" id="cp-current" placeholder="Enter current password">
+          <button class="pw-toggle" onclick="togglePw('cp-current',this)">👁</button></div>
+        </div>
+
+        <div class="form-group"><label>New Password</label>
+          <div class="pw-wrap"><input type="password" class="form-control" id="cp-new" placeholder="At least 6 characters" oninput="checkPwStrength(this.value)">
+          <button class="pw-toggle" onclick="togglePw('cp-new',this)">👁</button></div>
+          <div style="margin-top:.5rem">
+            <div style="height:4px;border-radius:999px;background:var(--bg3);overflow:hidden">
+              <div id="pw-strength-bar" style="height:100%;border-radius:999px;width:0;transition:width .3s,background .3s"></div>
+            </div>
+            <div id="pw-strength-label" style="font-size:.75rem;color:var(--text3);margin-top:.25rem"></div>
+          </div>
+        </div>
+
+        <div class="form-group"><label>Confirm New Password</label>
+          <div class="pw-wrap"><input type="password" class="form-control" id="cp-confirm" placeholder="Re-enter new password" oninput="checkPwMatch()">
+          <button class="pw-toggle" onclick="togglePw('cp-confirm',this)">👁</button></div>
+          <div id="pw-match-label" style="font-size:.75rem;margin-top:.25rem"></div>
+        </div>
+
+        <div id="cp-result" style="margin-bottom:1rem;font-size:.85rem;display:none;padding:.7rem 1rem;border-radius:8px"></div>
+
+        <button class="btn btn-primary w-full" onclick="doChangePassword()" style="padding:.8rem;font-size:.95rem">
+          🔒 Update Password
+        </button>
+
+        <div style="margin-top:1.2rem;padding:1rem;background:var(--bg3);border-radius:var(--radius2);border:1px solid var(--border)">
+          <div style="font-size:.78rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem">Security Tips</div>
+          <ul style="font-size:.8rem;color:var(--text2);padding-left:1.2rem;line-height:1.8">
+            <li>Use at least 8 characters with a mix of letters and numbers</li>
+            <li>Avoid using your name or common words</li>
+            <li>Never share your password with anyone</li>
+            <li>Change your password regularly</li>
+          </ul>
+        </div>
+      </div>
+    </div>`;
+}
+
+function togglePw(id,btn){
+  const input=document.getElementById(id);
+  if(!input)return;
+  if(input.type==='password'){input.type='text';btn.textContent='🙈';}
+  else{input.type='password';btn.textContent='👁';}
+}
+
+function checkPwStrength(pw){
+  const bar=document.getElementById('pw-strength-bar');
+  const label=document.getElementById('pw-strength-label');
+  if(!bar)return;
+  let score=0;
+  if(pw.length>=6)score++;
+  if(pw.length>=10)score++;
+  if(/[A-Z]/.test(pw))score++;
+  if(/[0-9]/.test(pw))score++;
+  if(/[^A-Za-z0-9]/.test(pw))score++;
+  const levels=[
+    {w:'0%',bg:'transparent',text:''},
+    {w:'20%',bg:'#ef4444',text:'Very weak'},
+    {w:'40%',bg:'#f97316',text:'Weak'},
+    {w:'60%',bg:'#eab308',text:'Fair'},
+    {w:'80%',bg:'#3b82f6',text:'Strong'},
+    {w:'100%',bg:'#10b981',text:'Very strong'},
+  ];
+  const l=levels[score]||levels[0];
+  bar.style.width=l.w;bar.style.background=l.bg;
+  label.textContent=l.text;label.style.color=l.bg;
+}
+
+function checkPwMatch(){
+  const nw=document.getElementById('cp-new')?.value||'';
+  const cf=document.getElementById('cp-confirm')?.value||'';
+  const lbl=document.getElementById('pw-match-label');
+  if(!lbl||!cf)return;
+  if(nw===cf){lbl.textContent='✓ Passwords match';lbl.style.color='var(--green)';}
+  else{lbl.textContent='✗ Passwords do not match';lbl.style.color='var(--red)';}
+}
+
+async function doChangePassword(){
+  const current=document.getElementById('cp-current')?.value.trim()||'';
+  const nw=document.getElementById('cp-new')?.value.trim()||'';
+  const confirm=document.getElementById('cp-confirm')?.value.trim()||'';
+  const result=document.getElementById('cp-result');
+
+  const show=(msg,ok)=>{
+    result.style.display='block';result.textContent=msg;
+    result.style.background=ok?'rgba(16,185,129,.12)':'rgba(239,68,68,.12)';
+    result.style.color=ok?'#34d399':'#f87171';
+    result.style.border=`1px solid ${ok?'rgba(16,185,129,.3)':'rgba(239,68,68,.3)'}`;
+  };
+
+  if(!current||!nw||!confirm){show('Please fill in all fields.',false);return;}
+  if(nw!==confirm){show('New passwords do not match.',false);return;}
+  if(nw.length<6){show('New password must be at least 6 characters.',false);return;}
+  if(current===nw){show('New password must be different from the current one.',false);return;}
+
+  const r=await api('POST','/change-password',{
+    user_id:currentUser.id,
+    current_password:current,
+    new_password:nw,
+    confirm_password:confirm
+  });
+
+  if(r.success){
+    show('✅ Password changed successfully! Please remember your new password.',true);
+    // Clear fields cleanly — no DOM re-render, no flicker
+    document.getElementById('cp-current').value='';
+    document.getElementById('cp-new').value='';
+    document.getElementById('cp-confirm').value='';
+    const bar=document.getElementById('pw-strength-bar');
+    const slabel=document.getElementById('pw-strength-label');
+    const mlabel=document.getElementById('pw-match-label');
+    if(bar){bar.style.width='0';bar.style.background='transparent';}
+    if(slabel) slabel.textContent='';
+    if(mlabel) mlabel.textContent='';
+    toast('Password updated successfully','success');
+    // Do NOT call showSection or re-render — avoids glitch
+  } else {
+    show('❌ '+r.message,false);
+  }
+}
+
+// ══════════════════════════════════════════════════
+//  STUDENT UI
+// ══════════════════════════════════════════════════
+function buildStudentUI(nav,content){
+  const sections=[
     {id:'dashboard',label:'My Dashboard',icon:'📊',section:'Overview'},
     {id:'my_courses',label:'My Courses',icon:'📚',section:'Academic'},
     {id:'my_marks',label:'Marks & Grades',icon:'📝',section:'Academic'},
@@ -1537,63 +1462,36 @@ function buildStudentUI(nav, content){
     {id:'my_timetable',label:'Timetable',icon:'🕐',section:'Academic'},
     {id:'announcements',label:'Announcements',icon:'📢',section:'Info'},
   ];
-
-  let currentSection='';
+  let cur='';
   sections.forEach(s=>{
-    if(s.section!==currentSection){
-      currentSection=s.section;
-      nav.innerHTML+=`<div class="nav-section"><div class="nav-section-label">${s.section}</div>`;
-    }
-    nav.innerHTML+=`
-      <div class="nav-item" id="nav-${s.id}" onclick="showSection('${s.id}')">
-        <span class="nav-icon">${s.icon}</span>${s.label}
-      </div>`;
+    if(s.section!==cur){cur=s.section;nav.innerHTML+=`<div class="nav-section"><div class="nav-section-label">${s.section}</div>`;}
+    nav.innerHTML+=`<div class="nav-item" id="nav-${s.id}" onclick="showSection('${s.id}')"><span class="nav-icon">${s.icon}</span>${s.label}</div>`;
     content.innerHTML+=`<div class="section-page" id="sec-${s.id}"></div>`;
   });
   nav.innerHTML+='</div>';
   showSection('dashboard');
 }
 
-// Student Dashboard
-async function renderAdminDashboard(sec){} // overridden below
-
-// Student dashboard using student_id
 async function renderStudentDashboardContent(sec){
-  const sid = currentUser.student_id;
+  const sid=currentUser.student_id;
   sec.innerHTML=`<div class="stat-grid">
-    <div class="stat-card"><div class="icon" style="background:rgba(59,130,246,.1)">📚</div>
-      <div class="value" id="sd-courses">–</div><div class="label">Enrolled Courses</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(16,185,129,.1)">📊</div>
-      <div class="value" id="sd-marks">–%</div><div class="label">Average Marks</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(245,158,11,.1)">✅</div>
-      <div class="value" id="sd-att">–%</div><div class="label">Attendance</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(139,92,246,.1)">📢</div>
-      <div class="value" id="sd-ann">–</div><div class="label">Announcements</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(59,130,246,.1)">📚</div><div class="value" id="sd-courses">–</div><div class="label">Enrolled Courses</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(16,185,129,.1)">📊</div><div class="value" id="sd-marks">–%</div><div class="label">Average Marks</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(245,158,11,.1)">✅</div><div class="value" id="sd-att">–%</div><div class="label">Attendance</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(139,92,246,.1)">📢</div><div class="value" id="sd-ann">–</div><div class="label">Announcements</div></div>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-    <div class="card">
-      <div class="card-header"><div class="card-title">Attendance Summary</div></div>
-      <div id="sd-att-summary"></div>
-    </div>
-    <div class="card">
-      <div class="card-header"><div class="card-title">Recent Announcements</div></div>
-      <div id="sd-recent-ann"></div>
-    </div>
+    <div class="card"><div class="card-header"><div class="card-title">Attendance Summary</div></div><div id="sd-att-summary"></div></div>
+    <div class="card"><div class="card-header"><div class="card-title">Recent Announcements</div></div><div id="sd-recent-ann"></div></div>
   </div>`;
-
   if(!sid){
-    document.getElementById('sd-courses').textContent='N/A';
-    document.getElementById('sd-marks').textContent='N/A';
-    document.getElementById('sd-att').textContent='N/A';
-    return;
+    ['sd-courses','sd-marks','sd-att'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='N/A';});return;
   }
-
-  const [dr, ar, annr] = await Promise.all([
+  const[dr,ar,annr]=await Promise.all([
     api('GET',`/dashboard/student/${sid}`),
     api('GET',`/attendance/summary/${sid}`),
     api('GET','/announcements')
   ]);
-
   if(dr.success){
     const s=dr.stats;
     document.getElementById('sd-courses').textContent=s.enrolled_courses;
@@ -1609,38 +1507,20 @@ async function renderStudentDashboardContent(sec){
           <span>${s.course_code}</span>
           <span style="color:${s.percentage>=75?'var(--green)':'var(--red)'}">${s.percentage}%</span>
         </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width:${s.percentage}%;background:${s.percentage>=75?'var(--green)':'var(--red)'}"></div>
-        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${s.percentage}%;background:${s.percentage>=75?'var(--green)':'var(--red)'}"></div></div>
         <div style="font-size:.75rem;color:var(--text3);margin-top:.2rem">${s.present}/${s.total_classes} classes</div>
       </div>`).join('');
   } else attEl.innerHTML='<div class="empty-state"><div class="icon">📅</div><p>No data</p></div>';
-
   const annEl=document.getElementById('sd-recent-ann');
   if(annr.success&&annr.announcements.length){
     annEl.innerHTML=annr.announcements.slice(0,3).map(a=>`
       <div style="padding:.7rem 0;border-bottom:1px solid var(--border)">
         <div style="font-size:.88rem;font-weight:600">${a.title}</div>
-        <div style="font-size:.8rem;color:var(--text2);margin-top:.2rem">${a.content.slice(0,80)}...</div>
-        <div style="font-size:.72rem;color:var(--text3);margin-top:.3rem">
-          ${new Date(a.created_at).toLocaleDateString()}
-        </div>
+        <div style="font-size:.8rem;color:var(--text2);margin-top:.2rem">${a.content.slice(0,80)}…</div>
+        <div style="font-size:.72rem;color:var(--text3);margin-top:.3rem">${new Date(a.created_at).toLocaleDateString()}</div>
       </div>`).join('');
   } else annEl.innerHTML='<div class="empty-state"><p>No announcements</p></div>';
 }
-
-// Route dashboard to right function based on role
-const _renderDash = renderAdminDashboard;
-function setupRenderDash(){
-  if(currentUser.role==='admin'){
-    window.renderAdminDashboard=renderAdminDashboard_real;
-  } else {
-    window.renderAdminDashboard=renderStudentDashboardContent;
-  }
-}
-
-// patch section render routing
-const sectionRenderers = {};
 
 function renderStudentCourses(sec){
   if(!currentUser.student_id){sec.innerHTML='<div class="card"><div class="empty-state"><p>Student profile not found</p></div></div>';return;}
@@ -1676,13 +1556,11 @@ function renderStudentMarks(sec){
     const tb=document.getElementById('sm-tbody');if(!tb)return;
     if(!r.success||!r.marks.length){tb.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="icon">📝</div><p>No marks recorded yet</p></div></td></tr>`;return;}
     tb.innerHTML=r.marks.map(m=>{
-      const pct=((m.marks_obtained/m.total_marks)*100).toFixed(1);
-      const gk=m.grade?m.grade[0]:'F';
-      return `<tr>
+      const pct=((m.marks_obtained/m.total_marks)*100).toFixed(1);const gk=m.grade?m.grade[0]:'F';
+      return`<tr>
         <td>${m.course_code} – ${m.course_name}</td>
         <td><span class="badge badge-purple">${m.exam_type}</span></td>
-        <td class="mono">${m.marks_obtained}</td>
-        <td class="mono">${m.total_marks}</td>
+        <td class="mono">${m.marks_obtained}</td><td class="mono">${m.total_marks}</td>
         <td>${pct}%</td>
         <td><span class="grade-pill grade-${gk}">${m.grade}</span></td>
         <td style="font-size:.8rem;color:var(--text3)">${m.exam_date||'–'}</td>
@@ -1690,48 +1568,74 @@ function renderStudentMarks(sec){
   });
 }
 
-function renderStudentAttendance(sec){
+// Student attendance — per-course tabs
+let stuAttCourses=[];
+let stuAttActiveCourse=null;
+
+async function renderStudentAttendance(sec){
   if(!currentUser.student_id){sec.innerHTML='<div class="card"><div class="empty-state"><p>Student profile not found</p></div></div>';return;}
+  const cr=await api('GET',`/student/${currentUser.student_id}/courses`);
+  stuAttCourses=cr.courses||[];
+
   sec.innerHTML=`
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-      <div class="card">
-        <div class="card-header"><div class="card-title">Attendance Summary</div></div>
-        <div id="sa-summary"></div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">My Attendance</div><div class="card-subtitle">Per-course attendance breakdown</div></div>
+      <div class="course-tab-strip" id="stu-att-tabs">
+        <div class="course-tab active" data-cid="all" onclick="stuAttSelect('all',this)">📊 All Courses</div>
+        ${stuAttCourses.map(c=>`<div class="course-tab" data-cid="${c.id}" onclick="stuAttSelect(${c.id},this)">${c.course_code}</div>`).join('')}
       </div>
-      <div class="card">
-        <div class="card-header"><div class="card-title">Attendance Records</div></div>
-        <div class="table-wrap" style="max-height:360px;overflow-y:auto"><table>
-          <thead><tr><th>Date</th><th>Course</th><th>Status</th></tr></thead>
-          <tbody id="sa-tbody"></tbody>
-        </table></div>
-      </div>
+      <div id="stu-att-summary" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin-bottom:1.2rem"></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Date</th><th>Course</th><th>Status</th></tr></thead>
+        <tbody id="stu-att-tbody"></tbody>
+      </table></div>
     </div>`;
+  stuAttSelect('all', sec.querySelector('.course-tab'));
+}
+
+async function stuAttSelect(courseId, tabEl){
+  stuAttActiveCourse=courseId;
+  document.querySelectorAll('#stu-att-tabs .course-tab').forEach(t=>t.classList.remove('active'));
+  if(tabEl) tabEl.classList.add('active');
+
   const sid=currentUser.student_id;
-  Promise.all([api('GET',`/attendance/summary/${sid}`),api('GET',`/attendance?student_id=${sid}`)]).then(([sr,ar])=>{
-    const sumEl=document.getElementById('sa-summary');
-    if(sr.success&&sr.summary.length){
-      sumEl.innerHTML=sr.summary.map(s=>`
-        <div style="margin-bottom:1rem">
-          <div style="display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:.4rem">
-            <strong>${s.course_code}</strong>
-            <span style="font-weight:700;color:${s.percentage>=75?'var(--green)':'var(--red)'}">${s.percentage}%</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:${s.percentage}%;background:${s.percentage>=75?'var(--green)':'var(--red)'}"></div></div>
-          <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:.3rem">
-            <span>Present: ${s.present}</span><span>Absent: ${s.absent}</span><span>Total: ${s.total_classes}</span>
-          </div>
+  const params=new URLSearchParams();
+  params.append('student_id',sid);
+  if(courseId!=='all') params.append('course_id',courseId);
+
+  const[ar,sr]=await Promise.all([
+    api('GET',`/attendance?${params}`),
+    api('GET',`/attendance/summary/${sid}`)
+  ]);
+
+  // Summary cards
+  const sumEl=document.getElementById('stu-att-summary');
+  if(sumEl&&sr.success){
+    const rows=courseId==='all'?sr.summary:sr.summary.filter(s=>String(s.course_id)===String(courseId));
+    if(rows.length){
+      sumEl.innerHTML=rows.map(s=>`
+        <div class="stat-card" style="margin:0">
+          <div style="font-size:.75rem;font-weight:600;color:var(--text3);margin-bottom:.4rem">${s.course_code}</div>
+          <div style="font-size:1.6rem;font-weight:700;color:${s.percentage>=75?'var(--green)':'var(--red)'}">${s.percentage}%</div>
+          <div class="progress-bar" style="margin:.4rem 0"><div class="progress-fill" style="width:${s.percentage}%;background:${s.percentage>=75?'var(--green)':'var(--red)'}"></div></div>
+          <div style="font-size:.75rem;color:var(--text3)">${s.present}P / ${s.absent}A / ${s.total_classes} total</div>
         </div>`).join('');
-    } else sumEl.innerHTML='<div class="empty-state"><p>No data</p></div>';
-    const tb=document.getElementById('sa-tbody');
-    if(ar.success&&ar.attendance.length){
-      tb.innerHTML=ar.attendance.map(a=>`
-        <tr>
-          <td class="mono">${a.date}</td>
-          <td>${a.course_code}</td>
-          <td><span class="att-status att-${a.status}">${a.status.toUpperCase()}</span></td>
-        </tr>`).join('');
-    } else tb.innerHTML=`<tr><td colspan="3"><div class="empty-state"><p>No records</p></div></td></tr>`;
-  });
+    } else {
+      sumEl.innerHTML='';
+    }
+  }
+
+  // Table
+  const tbody=document.getElementById('stu-att-tbody');
+  if(!tbody)return;
+  const recs=ar.attendance||[];
+  if(!recs.length){tbody.innerHTML=`<tr><td colspan="3"><div class="empty-state"><div class="icon">📅</div><p>No attendance records</p></div></td></tr>`;return;}
+  tbody.innerHTML=recs.map(a=>`
+    <tr>
+      <td class="mono">${a.date}</td>
+      <td>${a.course_code}</td>
+      <td><span class="att-status att-${a.status}">${a.status.toUpperCase()}</span></td>
+    </tr>`).join('');
 }
 
 function renderStudentAssignments(sec){
@@ -1744,7 +1648,7 @@ function renderStudentAssignments(sec){
     const now=new Date();
     el.innerHTML=r.assignments.map(a=>{
       const due=new Date(a.due_date);const overdue=due<now;
-      return `<div class="announce-item">
+      return`<div class="announce-item">
         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem">
           <h4>${a.title}</h4>
           ${overdue?'<span class="badge badge-red">Overdue</span>':'<span class="badge badge-green">Active</span>'}
@@ -1760,7 +1664,6 @@ function renderStudentAssignments(sec){
 }
 
 function renderStudentTimetable(sec){
-  const sid=currentUser.student_id;
   const dept=currentUser.department||'';
   const sem=currentUser.semester||'';
   const params=new URLSearchParams();
@@ -1788,12 +1691,12 @@ function renderStudentTimetable(sec){
 }
 
 // ══════════════════════════════════════════════════
-//   MODAL HELPERS
+//  MODAL HELPERS
 // ══════════════════════════════════════════════════
-function openModal(title, body, onSave=null, saveLabel='Save'){
+function openModal(title,body,onSave=null,saveLabel='Save'){
   const mc=document.getElementById('modal-container');
   mc.innerHTML=`
-    <div class="modal-backdrop" onclick="e=>e.target===this&&closeModal()">
+    <div class="modal-backdrop">
       <div class="modal">
         <div class="modal-header">
           <h3>${title}</h3>
@@ -1802,346 +1705,58 @@ function openModal(title, body, onSave=null, saveLabel='Save'){
         <div class="modal-body">${body}</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-          ${onSave?`<button class="btn btn-primary" onclick="triggerModalSave()">${saveLabel}</button>`:`<button class="btn btn-secondary" onclick="closeModal()">${saveLabel}</button>`}
+          ${onSave
+            ?`<button class="btn btn-primary" onclick="triggerModalSave()">${saveLabel}</button>`
+            :`<button class="btn btn-secondary" onclick="closeModal()">${saveLabel}</button>`}
         </div>
       </div>
     </div>`;
   window._modalSave=onSave;
 }
+function closeModal(){document.getElementById('modal-container').innerHTML='';window._modalSave=null;}
+async function triggerModalSave(){if(window._modalSave) await window._modalSave();}
+function val(id){const el=document.getElementById(id);return el?el.value.trim():'';}
 
-function closeModal(){
-  document.getElementById('modal-container').innerHTML='';
-  window._modalSave=null;
-}
-
-async function triggerModalSave(){
-  if(window._modalSave){
-    await window._modalSave();
-  }
-}
-
-function val(id){
-  const el=document.getElementById(id);
-  return el?el.value.trim():'';
-}
-
-// ══════════════════════════════════════════════════
-//   ROUTE FIX – dashboard per role
-// ══════════════════════════════════════════════════
-const _origInitApp=initApp;
-window.initApp=function(){
-  _origInitApp();
-  // patch dashboard render
-  if(currentUser.role==='student'){
-    // Override dashboard section render
-    document.querySelectorAll('.section-page').forEach(s=>{
-      if(s.id==='sec-dashboard') s._renderer=renderStudentDashboardContent;
-    });
-  }
-};
-
-// Patch showSection to check _renderer
-const _origShowSection=showSection;
-window.showSection=function(id){
-  document.querySelectorAll('.section-page').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const sec=document.getElementById(`sec-${id}`);
-  const nav=document.getElementById(`nav-${id}`);
-  if(sec)sec.classList.add('active');
-  if(nav)nav.classList.add('active');
-  document.getElementById('topbar-title').textContent={
-    dashboard:currentUser?.role==='admin'?'Admin Dashboard':'My Dashboard',
-    students:'Student Management',courses:'Course Management',
-    marks:'Marks & Grades',attendance:'Attendance Management',
-    assignments:'Assignments',timetable:'Timetable',announcements:'Announcements',
-    change_password:'Change Password',
-    my_courses:'My Courses',my_marks:'My Marks & Grades',
-    my_attendance:'My Attendance',my_assignments:'My Assignments',
-    my_timetable:'My Timetable'
-  }[id]||id;
-
-  const renders={
-    dashboard:currentUser?.role==='admin'?renderAdminDashboard:renderStudentDashboardContent,
-    students:renderStudents,courses:renderCourses,marks:renderMarks,
-    attendance:renderAttendance,assignments:renderAssignments,
-    timetable:renderTimetable,announcements:renderAnnouncements,
-    change_password:renderChangePassword,
-    my_courses:renderStudentCourses,my_marks:renderStudentMarks,
-    my_attendance:renderStudentAttendance,my_assignments:renderStudentAssignments,
-    my_timetable:renderStudentTimetable
-  };
-  if(renders[id]&&sec)renders[id](sec);
-};
-
-// Define the real admin dashboard
-function renderAdminDashboard(sec){
-  // re-check role
-  if(currentUser&&currentUser.role==='student'){
-    renderStudentDashboardContent(sec);
-  } else {
-    renderAdminDashboard_real(sec);
-  }
-}
-
-async function renderAdminDashboard_real(sec){
-  sec.innerHTML=`<div class="stat-grid">
-    <div class="stat-card"><div class="icon" style="background:rgba(59,130,246,.1)">👥</div>
-      <div class="value" id="ds-students">–</div><div class="label">Total Students</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(139,92,246,.1)">📚</div>
-      <div class="value" id="ds-courses">–</div><div class="label">Courses</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(245,158,11,.1)">📋</div>
-      <div class="value" id="ds-assignments">–</div><div class="label">Assignments</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(16,185,129,.1)">📢</div>
-      <div class="value" id="ds-announcements">–</div><div class="label">Announcements</div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Top Performers</div>
-      <div class="card-subtitle">Students with highest average marks</div></div></div>
-      <div id="ds-top-students"></div>
-    </div>
-    <div class="card">
-      <div class="card-header"><div><div class="card-title">Department Breakdown</div></div></div>
-      <div id="ds-dept-stats"></div>
-    </div>
-  </div>`;
-  const r=await api('GET','/dashboard/admin');
-  if(!r.success)return;
-  const s=r.stats;
-  document.getElementById('ds-students').textContent=s.total_students;
-  document.getElementById('ds-courses').textContent=s.total_courses;
-  document.getElementById('ds-assignments').textContent=s.total_assignments;
-  document.getElementById('ds-announcements').textContent=s.total_announcements;
-  const topEl=document.getElementById('ds-top-students');
-  if(!s.top_students.length){topEl.innerHTML='<div class="empty-state"><div class="icon">📊</div><p>No marks data yet</p></div>';return;}
-  topEl.innerHTML=s.top_students.map((st,i)=>`
-    <div style="display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--border)">
-      <div style="width:24px;height:24px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--text3)">${i+1}</div>
-      <div style="flex:1"><div style="font-size:.88rem;font-weight:600">${st.full_name}</div>
-      <div style="font-size:.75rem;color:var(--text3)">${st.roll_number} · ${st.department||'–'}</div></div>
-      <div style="font-size:.9rem;font-weight:700;color:var(--green)">${st.avg_marks}%</div>
-    </div>`).join('');
-  const deptEl=document.getElementById('ds-dept-stats');
-  if(!s.dept_stats.length){deptEl.innerHTML='<div class="empty-state"><div class="icon">🏛️</div><p>No data</p></div>';return;}
-  const total=s.dept_stats.reduce((a,d)=>a+d.cnt,0);
-  deptEl.innerHTML=s.dept_stats.map(d=>`
-    <div style="margin-bottom:.8rem">
-      <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.85rem">
-        <span>${d.department||'Unassigned'}</span>
-        <span style="color:var(--text2)">${d.cnt} students</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" style="width:${(d.cnt/total*100).toFixed(0)}%"></div></div>
-    </div>`).join('');
-}
-
-// ── LOGIN KEY ──
+// ── KEY HANDLERS ──
 document.getElementById('login-password').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 document.getElementById('login-username').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 
 // ══════════════════════════════════════════════════
-//   CHANGE PASSWORD (Admin)
+//  BACKEND BANNER
 // ══════════════════════════════════════════════════
-function renderChangePassword(sec){
-  sec.innerHTML=`
-    <div style="max-width:480px;margin:0 auto">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">🔑 Change Admin Password</div>
-            <div class="card-subtitle">Only you can see and change your password</div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Current Password</label>
-          <div style="position:relative">
-            <input type="password" class="form-control" id="cp-current" placeholder="Enter current password" style="padding-right:2.8rem">
-            <button onclick="togglePw('cp-current',this)" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;color:var(--text3);font-size:1rem;border:none;cursor:pointer">👁</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>New Password</label>
-          <div style="position:relative">
-            <input type="password" class="form-control" id="cp-new" placeholder="At least 6 characters" style="padding-right:2.8rem" oninput="checkPwStrength(this.value)">
-            <button onclick="togglePw('cp-new',this)" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;color:var(--text3);font-size:1rem;border:none;cursor:pointer">👁</button>
-          </div>
-          <!-- Strength bar -->
-          <div style="margin-top:.5rem">
-            <div style="height:4px;border-radius:999px;background:var(--bg3);overflow:hidden">
-              <div id="pw-strength-bar" style="height:100%;border-radius:999px;width:0;transition:width .3s,background .3s"></div>
-            </div>
-            <div id="pw-strength-label" style="font-size:.75rem;color:var(--text3);margin-top:.25rem"></div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Confirm New Password</label>
-          <div style="position:relative">
-            <input type="password" class="form-control" id="cp-confirm" placeholder="Re-enter new password" style="padding-right:2.8rem" oninput="checkPwMatch()">
-            <button onclick="togglePw('cp-confirm',this)" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;color:var(--text3);font-size:1rem;border:none;cursor:pointer">👁</button>
-          </div>
-          <div id="pw-match-label" style="font-size:.75rem;margin-top:.25rem"></div>
-        </div>
-
-        <div id="cp-result" style="margin-bottom:1rem;font-size:.85rem;display:none;padding:.7rem 1rem;border-radius:8px"></div>
-
-        <button class="btn btn-primary w-full" onclick="doChangePassword()" style="padding:.8rem;font-size:.95rem">
-          🔒 Update Password
-        </button>
-
-        <div style="margin-top:1.2rem;padding:1rem;background:var(--bg3);border-radius:var(--radius2);border:1px solid var(--border)">
-          <div style="font-size:.78rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem">Security Tips</div>
-          <ul style="font-size:.8rem;color:var(--text2);padding-left:1.2rem;line-height:1.8">
-            <li>Use at least 8 characters with a mix of letters and numbers</li>
-            <li>Avoid using your name or common words</li>
-            <li>Never share your password with anyone</li>
-            <li>Change your password regularly</li>
-          </ul>
-        </div>
-      </div>
-    </div>`;
-}
-
-function togglePw(id, btn){
-  const input = document.getElementById(id);
-  if(input.type==='password'){input.type='text';btn.textContent='🙈';}
-  else{input.type='password';btn.textContent='👁';}
-}
-
-function checkPwStrength(pw){
-  const bar = document.getElementById('pw-strength-bar');
-  const label = document.getElementById('pw-strength-label');
-  if(!bar) return;
-  let score = 0;
-  if(pw.length >= 6)  score++;
-  if(pw.length >= 10) score++;
-  if(/[A-Z]/.test(pw)) score++;
-  if(/[0-9]/.test(pw)) score++;
-  if(/[^A-Za-z0-9]/.test(pw)) score++;
-  const levels = [
-    {w:'0%',  bg:'transparent', text:''},
-    {w:'20%', bg:'#ef4444',     text:'Very weak'},
-    {w:'40%', bg:'#f97316',     text:'Weak'},
-    {w:'60%', bg:'#eab308',     text:'Fair'},
-    {w:'80%', bg:'#3b82f6',     text:'Strong'},
-    {w:'100%',bg:'#10b981',     text:'Very strong'},
-  ];
-  const l = levels[score]||levels[0];
-  bar.style.width = l.w;
-  bar.style.background = l.bg;
-  label.textContent = l.text;
-  label.style.color = l.bg;
-}
-
-function checkPwMatch(){
-  const nw = document.getElementById('cp-new')?.value||'';
-  const cf = document.getElementById('cp-confirm')?.value||'';
-  const lbl = document.getElementById('pw-match-label');
-  if(!lbl||!cf) return;
-  if(nw===cf){lbl.textContent='✓ Passwords match';lbl.style.color='var(--green)';}
-  else{lbl.textContent='✗ Passwords do not match';lbl.style.color='var(--red)';}
-}
-
-async function doChangePassword(){
-  const current = document.getElementById('cp-current')?.value.trim()||'';
-  const nw      = document.getElementById('cp-new')?.value.trim()||'';
-  const confirm = document.getElementById('cp-confirm')?.value.trim()||'';
-  const result  = document.getElementById('cp-result');
-
-  const show = (msg, ok)=>{
-    result.style.display='block';
-    result.textContent = msg;
-    result.style.background = ok ? 'rgba(16,185,129,.12)' : 'rgba(239,68,68,.12)';
-    result.style.color = ok ? '#34d399' : '#f87171';
-    result.style.border = `1px solid ${ok ? 'rgba(16,185,129,.3)' : 'rgba(239,68,68,.3)'}`;
-  };
-
-  if(!current||!nw||!confirm){show('Please fill in all fields.', false);return;}
-  if(nw!==confirm){show('New passwords do not match.', false);return;}
-  if(nw.length<6){show('New password must be at least 6 characters.', false);return;}
-  if(current===nw){show('New password must be different from the current one.', false);return;}
-
-  const r = await api('POST','/change-password',{
-    user_id: currentUser.id,
-    current_password: current,
-    new_password: nw,
-    confirm_password: confirm
-  });
-
-  if(r.success){
-    show('✅ Password changed successfully! Please remember your new password.', true);
-    document.getElementById('cp-current').value='';
-    document.getElementById('cp-new').value='';
-    document.getElementById('cp-confirm').value='';
-    document.getElementById('pw-strength-bar').style.width='0';
-    document.getElementById('pw-strength-label').textContent='';
-    document.getElementById('pw-match-label').textContent='';
-    // Update the banner hint if visible
-    const bannerTexts = document.querySelectorAll('#backend-banner code');
-    bannerTexts.forEach(c=>{ if(c.textContent==='admin123') c.textContent='(updated)'; });
-  } else {
-    show('❌ '+r.message, false);
-  }
-}
-
-// ══════════════════════════════════════════════════
-//   BACKEND STATUS BANNER
-// ══════════════════════════════════════════════════
-let _bannerDismissed = false;
-let _retryTimer = null;
-
+let _bannerDismissed=false,_retryTimer=null;
 function setBannerHeight(){
-  const banner = document.getElementById('backend-banner');
-  const h = banner.offsetHeight;
-  document.getElementById('login-screen').style.paddingTop = h+'px';
-  const app = document.getElementById('app');
-  if(app) app.style.paddingTop = h+'px';
+  const h=document.getElementById('backend-banner').offsetHeight;
+  document.getElementById('login-screen').style.paddingTop=h+'px';
+  const app=document.getElementById('app');if(app) app.style.paddingTop=h+'px';
 }
-
 function showBannerState(state){
-  document.getElementById('banner-checking').style.display = state==='checking' ? 'flex' : 'none';
-  document.getElementById('banner-offline').style.display  = state==='offline'  ? 'block' : 'none';
-  document.getElementById('banner-online').style.display   = state==='online'   ? 'block' : 'none';
-  setTimeout(setBannerHeight, 50);
+  document.getElementById('banner-checking').style.display=state==='checking'?'flex':'none';
+  document.getElementById('banner-offline').style.display=state==='offline'?'block':'none';
+  document.getElementById('banner-online').style.display=state==='online'?'block':'none';
+  setTimeout(setBannerHeight,50);
 }
-
 function dismissBanner(){
-  _bannerDismissed = true;
-  const b = document.getElementById('backend-banner');
-  b.style.transform = 'translateY(-100%)';
-  setTimeout(()=>{b.style.display='none';}, 420);
-  document.getElementById('login-screen').style.paddingTop = '0';
-  const app = document.getElementById('app');
-  if(app) app.style.paddingTop = '0';
+  _bannerDismissed=true;
+  const b=document.getElementById('backend-banner');
+  b.style.transform='translateY(-100%)';
+  setTimeout(()=>{b.style.display='none';},420);
+  document.getElementById('login-screen').style.paddingTop='0';
+  const app=document.getElementById('app');if(app) app.style.paddingTop='0';
 }
-
 async function checkBackend(){
-  if(_bannerDismissed) return;
+  if(_bannerDismissed)return;
   showBannerState('checking');
-  try {
-    const res = await fetch('http://localhost:5000/api/courses', {method:'GET', signal: AbortSignal.timeout(3000)});
-    if(res.ok || res.status === 200){
+  try{
+    const res=await fetch('http://localhost:5000/api/courses',{method:'GET',signal:AbortSignal.timeout(3000)});
+    if(res.ok||res.status===200){
       showBannerState('online');
-      // Auto-dismiss after 8 seconds once online
       clearTimeout(_retryTimer);
-      _retryTimer = setTimeout(()=>{if(!_bannerDismissed) dismissBanner();}, 8000);
-    } else {
-      showBannerState('offline');
-      scheduleRetry();
-    }
-  } catch(e) {
-    showBannerState('offline');
-    scheduleRetry();
-  }
+      _retryTimer=setTimeout(()=>{if(!_bannerDismissed)dismissBanner();},8000);
+    } else {showBannerState('offline');scheduleRetry();}
+  }catch(e){showBannerState('offline');scheduleRetry();}
 }
-
-function scheduleRetry(){
-  clearTimeout(_retryTimer);
-  _retryTimer = setTimeout(()=>{ if(!_bannerDismissed) checkBackend(); }, 5000);
-}
-
-// Run on page load
+function scheduleRetry(){clearTimeout(_retryTimer);_retryTimer=setTimeout(()=>{if(!_bannerDismissed)checkBackend();},5000);}
 checkBackend();
 </script>
 </body>
